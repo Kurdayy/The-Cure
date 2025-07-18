@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqvo88tdxlx2e"]
+
+[ext_resource type="Script" uid="uid://8x102dugaoac" path="res://Scenes/player_character.gd" id="1_cmdk4"]
+[ext_resource type="Texture2D" uid="uid://dmxlj40tgueml" path="res://Sprites/test_char_png.png" id="2_o0f8b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y23vu"]
+radius = 55.103
+height = 110.206
+
+[node name="player_character" type="CharacterBody2D"]
+scale = Vector2(0.435547, 0.435547)
+script = ExtResource("1_cmdk4")
+movement_speed = 500.0
+
+[node name="TestCharPng" type="Sprite2D" parent="."]
+position = Vector2(-238.78, -918.385)
+scale = Vector2(1.86547, 1.86547)
+texture = ExtResource("2_o0f8b")
+centered = false
+
+[node name="player_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y23vu")
+
+[node name="player_nav" type="NavigationAgent2D" parent="."]

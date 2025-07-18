@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://blwp2648a4fwc"]
+
+[ext_resource type="PackedScene" uid="uid://cf1bivsj66gws" path="res://Scenes/room_lab.tscn" id="1_6l7je"]
+[ext_resource type="Script" uid="uid://buv72kqfwuu4e" path="res://Scenes/room_manager.gd" id="1_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/player_character.tscn" id="2_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://42eydgsaydvi" path="res://Scenes/room_hall.tscn" id="3_x6ack"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="RoomManager" type="Node2D" parent="." node_paths=PackedStringArray("current_room")]
+script = ExtResource("1_jv6wh")
+current_room = NodePath("room_lab")
+
+[node name="room_lab" parent="RoomManager" instance=ExtResource("1_6l7je")]
+
+[node name="room_hall" parent="RoomManager" instance=ExtResource("3_x6ack")]
+position = Vector2(0, -1080)
+
+[node name="player_character" parent="." instance=ExtResource("2_jv6wh")]
+position = Vector2(832, 560)
+
+[node name="MainCamera" type="Camera2D" parent="."]
+anchor_mode = 0
