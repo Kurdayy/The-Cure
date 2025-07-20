@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://blwp2648a4fwc"]
+[gd_scene load_steps=7 format=3 uid="uid://blwp2648a4fwc"]
 
-[ext_resource type="PackedScene" uid="uid://cf1bivsj66gws" path="res://Scenes/room_lab.tscn" id="1_6l7je"]
-[ext_resource type="Script" uid="uid://buv72kqfwuu4e" path="res://Scenes/room_manager.gd" id="1_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://cf1bivsj66gws" path="res://Scenes/rooms/room_lab.tscn" id="1_6l7je"]
+[ext_resource type="Script" uid="uid://buv72kqfwuu4e" path="res://Scripts/room_manager.gd" id="1_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/player_character.tscn" id="2_jv6wh"]
-[ext_resource type="PackedScene" uid="uid://42eydgsaydvi" path="res://Scenes/room_hall.tscn" id="3_x6ack"]
+[ext_resource type="PackedScene" uid="uid://hdfv4uqe4353" path="res://Scenes/rooms/room_b_hall0.tscn" id="6_maf8m"]
+[ext_resource type="PackedScene" uid="uid://dc77jk1r7smmd" path="res://Scenes/rooms/room_b_hall1.tscn" id="7_huasi"]
+[ext_resource type="PackedScene" uid="uid://cthlmpw10bjwp" path="res://Scenes/rooms/room_b_mng.tscn" id="8_m1efj"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -12,12 +14,19 @@ script = ExtResource("1_jv6wh")
 current_room = NodePath("room_lab")
 
 [node name="room_lab" parent="RoomManager" instance=ExtResource("1_6l7je")]
+position = Vector2(-1920, 1080)
 
-[node name="room_hall" parent="RoomManager" instance=ExtResource("3_x6ack")]
+[node name="room_b_hall0" parent="RoomManager" instance=ExtResource("6_maf8m")]
+position = Vector2(-1920, -1080)
+
+[node name="room_b_hall1" parent="RoomManager" instance=ExtResource("7_huasi")]
 position = Vector2(0, -1080)
 
+[node name="room_b_mng" parent="RoomManager" instance=ExtResource("8_m1efj")]
+position = Vector2(-3840, -1080)
+
 [node name="player_character" parent="." instance=ExtResource("2_jv6wh")]
-position = Vector2(832, 560)
+position = Vector2(-1248, 1640)
 
 [node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0

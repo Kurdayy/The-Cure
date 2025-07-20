@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cf1bivsj66gws"]
 
-[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scenes/room.gd" id="1_oq0nc"]
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_oq0nc"]
 [ext_resource type="Texture2D" uid="uid://buo4co3asryqy" path="res://Backgrounds/test_background_001.png" id="1_wfm5n"]
-[ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scenes/room_transition.gd" id="2_wfm5n"]
+[ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/room_transition.gd" id="2_wfm5n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
 vertices = PackedVector2Array(438, 322, 1830, 322, 1830, 1006, 90, 1006, 90, 322, 330, 322, 438, 290, 330, 290)
@@ -25,8 +25,8 @@ navigation_polygon = SubResource("NavigationPolygon_oq0nc")
 [node name="t0" type="Area2D" parent="transitions"]
 position = Vector2(384, 336)
 script = ExtResource("2_wfm5n")
-room_to = "room_hall"
-point_to_id = 1
+room_to = "room_b_hall0"
+point_to_id = 4
 
 [node name="transition_area" type="CollisionPolygon2D" parent="transitions/t0"]
 position = Vector2(-56, -80)

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cisfwd6hmr8yf"]
+
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_wensy"]
+[ext_resource type="Texture2D" uid="uid://bqqr7lof4ytdq" path="res://Backgrounds/bg_a_hall1_alt.png" id="2_wensy"]
+[ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/room_transition.gd" id="3_pkwl5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
+vertices = PackedVector2Array(1326, 506, 1662, 506, 1662, 562, 1710, 562, 1710, 790, 1662, 790, 1662, 838, 10, 838, 10, 506, 698, 506, 1326, 194, 698, 194)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(2, 3, 4, 5), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(2, 5, 9, 0), PackedInt32Array(10, 0, 9, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 496, 0, 848, 1672, 848, 1672, 800, 1720, 800, 1720, 552, 1672, 552, 1672, 496, 1336, 496, 1336, 184, 688, 184, 688, 496)])
+
+[node name="room_a_hall1" type="Node2D"]
+script = ExtResource("1_wensy")
+metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_wensy")
+centered = false
+
+[node name="room_nav" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_oq0nc")
+
+[node name="transitions" type="Node2D" parent="."]
+
+[node name="t0" type="Area2D" parent="transitions"]
+position = Vector2(88, 672)
+script = ExtResource("3_pkwl5")
+room_to = "room_a_hall0"
+point_to_id = 3
+
+[node name="transition_area" type="CollisionPolygon2D" parent="transitions/t0"]
+position = Vector2(-88, -96)
+polygon = PackedVector2Array(0, -80, 24, -80, 24, 272, 0, 272)
+
+[node name="t1" type="Area2D" parent="transitions"]
+position = Vector2(1632, 680)
+script = ExtResource("3_pkwl5")
+
+[node name="transition_area" type="CollisionPolygon2D" parent="transitions/t1"]
+position = Vector2(-80, -80)
+polygon = PackedVector2Array(152, -48, 168, -48, 168, 200, 152, 200)
+
+[connection signal="body_entered" from="transitions/t0" to="transitions/t0" method="_on_body_entered"]
+[connection signal="body_entered" from="transitions/t1" to="transitions/t1" method="_on_body_entered"]

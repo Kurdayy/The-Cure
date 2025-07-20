@@ -6,22 +6,22 @@ var nav_max_move_gap = 50;
 @onready var nav_agent: NavigationAgent2D = $player_nav
 @onready var camera: Camera2D = get_tree().current_scene.get_node("MainCamera")
 
-func _ready():
-	nav_agent.path_desired_distance = 4.0
-	nav_agent.target_desired_distance = 4.0
+func _ready() -> void:
+	nav_agent.path_desired_distance = 6.0
+	nav_agent.target_desired_distance = 6.0
 	
 	#delayed setup
 	move_target = position
 	actor_setup.call_deferred()
 	
 	
-func actor_setup():
+func actor_setup() -> void:
 	#wait for first physics frame for nav agent to fill
 	await get_tree().physics_frame
 	set_move_target(move_target)
 
 
-func set_move_target(pos: Vector2):
+func set_move_target(pos: Vector2)  -> void:
 	move_target = pos
 	nav_agent.target_position = pos
 	
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-func input_check():
+func input_check() -> void:
 	if Input.is_action_just_pressed("interact"):
 		print("interact at ", get_viewport().get_mouse_position())
 	elif Input.is_action_pressed("move"):
@@ -57,7 +57,7 @@ func input_check():
 	
 			
 
-func input_move(pos: Vector2):
+func input_move(pos: Vector2) -> void:
 	var nav_map = get_world_2d().navigation_map
 	var point = NavigationServer2D.map_get_closest_point(nav_map, pos)
 	
