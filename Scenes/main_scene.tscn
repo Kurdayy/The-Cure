@@ -17,7 +17,7 @@ current_room = NodePath("room_lab")
 position = Vector2(-1920, 1080)
 
 [node name="room_b_hall0" parent="RoomManager" instance=ExtResource("6_maf8m")]
-position = Vector2(-1920, -1080)
+position = Vector2(-1920, -2032)
 
 [node name="room_b_hall1" parent="RoomManager" instance=ExtResource("7_huasi")]
 position = Vector2(0, -1080)

@@ -11,6 +11,8 @@ height = 110.206
 scale = Vector2(0.435547, 0.435547)
 script = ExtResource("1_cmdk4")
 movement_speed = 800.0
+movement_accel = 3200.0
+movement_deccel = 6400.0
 
 [node name="TestCharPng" type="Sprite2D" parent="."]
 position = Vector2(-146.942, -551.031)

@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc77jk1r7smmd"]
+[gd_scene load_steps=7 format=3 uid="uid://dc77jk1r7smmd"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_ext8b"]
 [ext_resource type="Texture2D" uid="uid://b8mdjmxxfxeep" path="res://Backgrounds/bg_b_hall1.png" id="2_rkbla"]
 [ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/room_transition.gd" id="3_oo1m4"]
+[ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/transition.tscn" id="3_p15v1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
 vertices = PackedVector2Array(870, 626, 1566, 626, 1566, 650, 1654, 650, 1654, 854, 1566, 854, 1566, 878, 10, 878, 10, 626, 626, 626, 870, 330, 626, 330)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(2, 3, 4, 5), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(2, 5, 9, 0), PackedInt32Array(10, 0, 9, 11)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 616, 0, 888, 1576, 888, 1576, 864, 1664, 864, 1664, 640, 1576, 640, 1576, 616, 880, 616, 880, 320, 616, 320, 616, 616)])
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
 
 [node name="room_b_hall1" type="Node2D"]
 script = ExtResource("1_ext8b")
@@ -22,23 +25,31 @@ navigation_polygon = SubResource("NavigationPolygon_oq0nc")
 
 [node name="transitions" type="Node2D" parent="."]
 
-[node name="t0" type="Area2D" parent="transitions"]
-position = Vector2(128, 752)
-script = ExtResource("3_oo1m4")
+[node name="t0" parent="transitions" instance=ExtResource("3_p15v1")]
+position = Vector2(16, 752)
 room_to = "room_b_hall0"
 point_to_id = 3
+dirh = false
 
-[node name="transition_area" type="CollisionPolygon2D" parent="transitions/t0"]
-position = Vector2(-88, -96)
-polygon = PackedVector2Array(-40, -40, -16, -40, -16, 232, -40, 232)
+[node name="transition_area" parent="transitions/t0" index="0"]
+position = Vector2(-96, -16)
+polygon = PackedVector2Array(80, -128, 112, -128, 112, 160, 80, 160)
 
 [node name="t1" type="Area2D" parent="transitions"]
 position = Vector2(1536, 760)
 script = ExtResource("3_oo1m4")
+dirh = false
 
 [node name="transition_area" type="CollisionPolygon2D" parent="transitions/t1"]
 position = Vector2(-80, -80)
 polygon = PackedVector2Array(192, -48, 224, -48, 224, 192, 192, 192)
 
-[connection signal="body_entered" from="transitions/t0" to="transitions/t0" method="_on_body_entered"]
+[node name="room_collision" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_p15v1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
+polygon = PackedVector2Array(0, 896, 1600, 896, 1600, 872, 1680, 872, 1680, 632, 1600, 632, 1600, 608, 896, 608, 896, 320, 600, 320, 600, 608, 0, 608, 0, 0, 1920, 0, 1920, 1080, 0, 1080)
+
 [connection signal="body_entered" from="transitions/t1" to="transitions/t1" method="_on_body_entered"]
+
+[editable path="transitions/t0"]

@@ -36,15 +36,22 @@ func update_current_room(new_room: Room):
 	current_room = new_room
 	camera.global_position = new_room.global_position
 	current_room.show()
+	for c in current_room.get_children(true):
+		c.set_process(true)
+		c.set_physics_process(true)
 	print("Changed current room to ", current_room)
 	
 	
-func room_transition(room_from: Room, room_to_name: String, point_to_id: int, collider: Node2D):
+func room_transition(room_from: Room, room_to_name: String, point_to_id: int, collider: Node2D, offset: Vector2):
 	room_from.hide()
+	for c in room_from.get_children(true):
+		c.set_process(false)
+		c.set_physics_process(false)
 	var room_to: Room = get_room_from_name(room_to_name)
 	var transition = room_to.transitions[point_to_id]
 
 	update_current_room(room_to)
-	player.global_position = transition.global_position
-	player.set_move_target(transition.global_position)
+	transition.deactivate_transition() #so we dont collide when we first enter
+	player.global_position = transition.global_position + offset #mirror offset when we touch the zone
+	player.set_move_target(transition.global_position  + offset)
 	
