@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdyrxhj87100g"]
+
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_75b8j"]
+[ext_resource type="Texture2D" uid="uid://dbmu2ity2x82y" path="res://Backgrounds/bg_d_death.png" id="2_xe0tb"]
+[ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_eudex"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
+
+[node name="room_d_death" type="Node2D"]
+script = ExtResource("1_75b8j")
+camera_locked = false
+room_height = 2160
+metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(593, -941)
+texture = ExtResource("2_xe0tb")
+centered = false
+offset = Vector2(-593, -1219)
+
+[node name="transitions" type="Node2D" parent="."]
+position = Vector2(0, -2160)
+
+[node name="t0" parent="transitions" instance=ExtResource("3_eudex")]
+position = Vector2(960, 3224)
+room_to = "room_d_corner"
+point_to_id = 1
+
+[node name="transition_area" parent="transitions/t0" index="0"]
+polygon = PackedVector2Array(-72, 0, 248, 0, 248, 32, -72, 32)
+
+[node name="room_collision" type="StaticBody2D" parent="."]
+position = Vector2(0, -2160)
+physics_material_override = SubResource("PhysicsMaterial_p15v1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
+polygon = PackedVector2Array(1920, 3240, 1120, 3240, 1120, 2840, 1480, 2840, 1376, 2760, 1328, 2672, 1328, 2040, 1280, 1992, 1248, 1928, 1248, 1200, 1288, 1064, 1352, 976, 1352, 744, 632, 744, 632, 1040, 656, 1080, 688, 1208, 688, 1936, 632, 2024, 632, 2672, 568, 2776, 464, 2840, 800, 2840, 800, 3240, 0, 3240, 0, 0, 1920, 0)
+
+[editable path="transitions/t0"]

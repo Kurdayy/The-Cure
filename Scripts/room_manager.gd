@@ -35,6 +35,15 @@ func get_room_from_name(s: String) -> Room:
 func update_current_room(new_room: Room):
 	current_room = new_room
 	camera.global_position = new_room.global_position
+	if !current_room.camera_locked:
+		camera.camera_follow = true
+		camera.limit_hor = Vector2(current_room.global_position.x, current_room.global_position.x)
+		camera.limit_ver = Vector2(current_room.global_position.y - current_room.room_height, current_room.global_position.y )
+	else:
+		camera.camera_follow = false
+		camera.limit_hor = Vector2(current_room.global_position.x, current_room.global_position.x)
+		camera.limit_ver = Vector2(current_room.global_position.y, current_room.global_position.y)
+		
 	current_room.show()
 	for c in current_room.get_children(true):
 		c.set_process(true)
@@ -43,14 +52,23 @@ func update_current_room(new_room: Room):
 	
 	
 func room_transition(room_from: Room, room_to_name: String, point_to_id: int, collider: Node2D, offset: Vector2):
+	
+	var room_to: Room = get_room_from_name(room_to_name)
+	if room_to == null:
+		printerr("Couldn't find room: ", room_to_name)
+		return
+		
+	var transition = room_to.transitions[point_to_id]
+	if transition == null:
+		printerr("Couldn't find transition id: ", point_to_id)
+		return
+		
 	room_from.hide()
 	for c in room_from.get_children(true):
 		c.set_process(false)
 		c.set_physics_process(false)
-	var room_to: Room = get_room_from_name(room_to_name)
-	var transition = room_to.transitions[point_to_id]
-
 	update_current_room(room_to)
+	
 	transition.deactivate_transition() #so we dont collide when we first enter
 	player.global_position = transition.global_position + offset #mirror offset when we touch the zone
 	player.set_move_target(transition.global_position  + offset)

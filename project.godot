@@ -13,7 +13,6 @@ config_version=5
 config/name="The Cure"
 run/main_scene="uid://blwp2648a4fwc"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [display]
 
@@ -69,3 +68,4 @@ move_down={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

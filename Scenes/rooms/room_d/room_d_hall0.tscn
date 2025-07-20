@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://oihdd8cstyt2"]
+
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_kunyl"]
+[ext_resource type="Texture2D" uid="uid://b164i522eb1hs" path="res://Backgrounds/bg_d_hall0.png" id="2_evm6s"]
+[ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_phduy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
+
+[node name="room_d_hall0" type="Node2D"]
+script = ExtResource("1_kunyl")
+metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_evm6s")
+centered = false
+
+[node name="transitions" type="Node2D" parent="."]
+
+[node name="t0" parent="transitions" instance=ExtResource("3_phduy")]
+position = Vector2(1904, 704)
+room_to = "room_d_boiler"
+dirh = false
+
+[node name="transition_area" parent="transitions/t0" index="0"]
+position = Vector2(-96, -32)
+polygon = PackedVector2Array(80, -128, 112, -128, 112, 160, 80, 160)
+
+[node name="t1" parent="transitions" instance=ExtResource("3_phduy")]
+position = Vector2(1312, 528)
+room_to = "room_c_hall0"
+point_to_id = 3
+
+[node name="t2" parent="transitions" instance=ExtResource("3_phduy")]
+position = Vector2(16, 704)
+room_to = "room_d_corner"
+dirh = false
+
+[node name="transition_area" parent="transitions/t2" index="0"]
+position = Vector2(-96, -32)
+polygon = PackedVector2Array(80, -128, 112, -128, 112, 160, 80, 160)
+
+[node name="room_collision" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_p15v1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 552, 1832, 552, 1832, 320, 1696, 320, 1696, 304, 1560, 304, 1560, 320, 1512, 320, 1512, 552, 1376, 552, 1376, 528, 1240, 528, 1240, 552, 808, 552, 808, 520, 672, 520, 672, 552, 456, 552, 456, 536, 328, 536, 328, 552, 0, 552)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="room_collision"]
+polygon = PackedVector2Array(0, 1080, 1920, 1080, 1920, 832, 0, 832)
+
+[editable path="transitions/t0"]
+[editable path="transitions/t2"]

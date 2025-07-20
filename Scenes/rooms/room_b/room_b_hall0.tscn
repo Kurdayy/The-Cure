@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://hdfv4uqe4353"]
+
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_qyikc"]
+[ext_resource type="Texture2D" uid="uid://bs8umcl1h2337" path="res://Backgrounds/bg_b_hall0.png" id="2_p15v1"]
+[ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_6iyp8"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
+vertices = PackedVector2Array(1130, 877.922, 98, 885.922, 98, 806, 670, 626, 1450, 626, 1450, 602, 1526, 602, 1526, 626, 1910, 626, 1910, 878, 1198, 878, 1198, 910, 1130, 910, 10, 806, 10, 698, 98, 698, 602, 626, 98, 626, 670, 602, 602, 602)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(4, 7, 10), PackedInt32Array(3, 4, 10, 0), PackedInt32Array(10, 11, 12, 0), PackedInt32Array(2, 13, 14, 15), PackedInt32Array(3, 2, 15, 16), PackedInt32Array(15, 17, 16), PackedInt32Array(18, 3, 16, 19)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(88, 616, 88, 688, 0, 688, 0, 816, 88, 816, 88, 896, 1120, 888, 1120, 920, 1208, 920, 1208, 888, 1920, 888, 1920, 616, 1536, 616, 1536, 592, 1440, 592, 1440, 616, 680, 616, 680, 592, 592, 592, 592, 616)])
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ftsn6"]
+
+[node name="room_b_hall0" type="Node2D"]
+script = ExtResource("1_qyikc")
+camera_locked = null
+room_height = null
+metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_p15v1")
+centered = false
+
+[node name="room_nav" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_oq0nc")
+
+[node name="transitions" type="Node2D" parent="."]
+
+[node name="t0" parent="transitions" instance=ExtResource("3_6iyp8")]
+position = Vector2(640, 584)
+
+[node name="t1" parent="transitions" instance=ExtResource("3_6iyp8")]
+position = Vector2(1490, 600)
+room_to = "room_c_hall0"
+point_to_id = 2
+
+[node name="t2" parent="transitions" instance=ExtResource("3_6iyp8")]
+position = Vector2(16, 752)
+room_to = "room_b_mng"
+dirh = false
+
+[node name="transition_area" parent="transitions/t2" index="0"]
+position = Vector2(-40, 32)
+polygon = PackedVector2Array(24, -104, 56, -104, 56, 40, 24, 40)
+
+[node name="t3" parent="transitions" instance=ExtResource("3_6iyp8")]
+position = Vector2(1904, 752)
+room_to = "room_b_hall1"
+dirh = false
+
+[node name="transition_area" parent="transitions/t3" index="0"]
+polygon = PackedVector2Array(72, -128, 104, -128, 104, 160, 72, 160)
+
+[node name="t4" parent="transitions" instance=ExtResource("3_6iyp8")]
+position = Vector2(1168, 920)
+room_to = "room_b_arm"
+
+[node name="room_collision" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ftsn6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
+polygon = PackedVector2Array(0, 824, 48, 824, 48, 896, 1096, 896, 1096, 920, 1240, 920, 1240, 896, 1920, 896, 1920, 1080, 0, 1080)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="room_collision"]
+polygon = PackedVector2Array(0, 680, 48, 680, 48, 608, 568, 608, 568, 576, 704, 576, 704, 608, 1424, 608, 1424, 576, 1560, 576, 1560, 608, 1920, 608, 1920, 0, 0, 0)
+
+[editable path="transitions/t0"]
+[editable path="transitions/t2"]
+[editable path="transitions/t3"]
+[editable path="transitions/t4"]

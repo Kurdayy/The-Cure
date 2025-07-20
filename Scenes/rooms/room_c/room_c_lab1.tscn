@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://celd2i17rdrt8"]
+
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_t4k6f"]
+[ext_resource type="Texture2D" uid="uid://btbohcmgk8ran" path="res://Backgrounds/bg_c_lab1.png" id="2_t4k6f"]
+[ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_4a6c1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
+
+[node name="room_c_lab1" type="Node2D"]
+script = ExtResource("1_t4k6f")
+metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_t4k6f")
+centered = false
+
+[node name="transitions" type="Node2D" parent="."]
+
+[node name="t0" parent="transitions" instance=ExtResource("3_4a6c1")]
+position = Vector2(888, 936)
+room_to = "room_c_lab0"
+point_to_id = 1
+
+[node name="room_collision" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_p15v1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
+polygon = PackedVector2Array(744, 912, 816, 912, 816, 936, 960, 936, 960, 912, 1216, 912, 1920, 1080, 0, 1080, 0, 0, 1920, 0, 1920, 1080, 1216, 912, 1216, 552, 744, 552)
