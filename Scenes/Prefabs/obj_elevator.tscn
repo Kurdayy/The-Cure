@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://co0qn64mooqb6"]
+
+[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="1_8x5lg"]
+[ext_resource type="Script" uid="uid://ctkckvjbca3vs" path="res://Scenes/Rooms/room_c/obj_elevator.gd" id="2_5pf5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wnjr"]
+size = Vector2(80, 34.4615)
+
+[node name="obj_elevator_up" type="Sprite2D"]
+position = Vector2(-1, 93)
+scale = Vector2(1.75, 2.4375)
+texture = ExtResource("1_8x5lg")
+offset = Vector2(0.571429, -38.1538)
+script = ExtResource("2_5pf5p")
+
+[node name="obj_col" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_col"]
+position = Vector2(0, -16.4103)
+shape = SubResource("RectangleShape2D_6wnjr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -37.0
+offset_top = -49.0
+offset_right = 46.0
+offset_bottom = -9.0
+text = "ELEVATOR"
+fit_content = true
+scroll_active = false

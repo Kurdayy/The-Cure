@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8k7bs1h24rt5"]
+
+[ext_resource type="Script" uid="uid://d1blb7hth4jxb" path="res://Scripts/elevator_transition.gd" id="1_vyop7"]
+
+[node name="elevator_transition" type="ColorRect"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_vyop7")

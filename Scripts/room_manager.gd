@@ -71,5 +71,5 @@ func room_transition(room_from: Room, room_to_name: String, point_to_id: int, of
 	
 	transition.deactivate_transition() #so we dont collide when we first enter
 	player.global_position = transition.global_position + offset #mirror offset when we touch the zone
-	player.set_move_target(transition.global_position  + offset)
+	player.z_index = player.global_position.y
 	

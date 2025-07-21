@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://blwp2648a4fwc"]
+[gd_scene load_steps=18 format=3 uid="uid://blwp2648a4fwc"]
 
 [ext_resource type="Script" uid="uid://buv72kqfwuu4e" path="res://Scripts/room_manager.gd" id="1_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/Prefabs/player_character.tscn" id="2_jv6wh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://c1rbfreb0e7e7" path="res://Scripts/main_camera.gd" id="13_ioaeq"]
 [ext_resource type="PackedScene" uid="uid://bpqtn6drelxa" path="res://Scenes/Rooms/room_d/room_d_corner.tscn" id="13_psl12"]
 [ext_resource type="PackedScene" uid="uid://c2x2hss4usgk0" path="res://Scenes/Rooms/room_d/room_d_boiler.tscn" id="14_2ebs2"]
+[ext_resource type="Script" uid="uid://oskfgolfvi7b" path="res://Scenes/gui_controller.gd" id="17_psl12"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -24,48 +25,68 @@ script = ExtResource("1_jv6wh")
 current_room = NodePath("room_c_lab0")
 
 [node name="room_b_hall0" parent="RoomManager" instance=ExtResource("6_maf8m")]
-position = Vector2(-1920, -1592)
-camera_locked = true
-room_height = 1080
+position = Vector2(3968, 0)
 
 [node name="room_b_hall1" parent="RoomManager" instance=ExtResource("7_huasi")]
-position = Vector2(0, -1080)
+position = Vector2(5952, 0)
 
 [node name="room_b_mng" parent="RoomManager" instance=ExtResource("8_m1efj")]
-position = Vector2(-3840, -1080)
+position = Vector2(1984, 0)
 
 [node name="room_b_arm" parent="RoomManager" instance=ExtResource("6_huasi")]
-position = Vector2(-1920, -512)
+z_index = 1152
+position = Vector2(3968, 1152)
 
 [node name="room_c_hall1" parent="RoomManager" instance=ExtResource("7_m1efj")]
-position = Vector2(0, 1080)
+z_index = 2304
+position = Vector2(7936, 2304)
 
 [node name="room_c_hall0" parent="RoomManager" instance=ExtResource("8_mai8y")]
-position = Vector2(-1920, 568)
+z_index = 2304
+position = Vector2(5952, 2304)
 
 [node name="room_c_closet" parent="RoomManager" instance=ExtResource("8_76v2p")]
+z_index = 1152
+position = Vector2(7936, 1152)
 
 [node name="room_c_lab0" parent="RoomManager" instance=ExtResource("9_drdnd")]
-position = Vector2(-1920, 1648)
+z_index = 2304
+position = Vector2(3968, 2304)
 
 [node name="room_c_lab1" parent="RoomManager" instance=ExtResource("10_ioaeq")]
-position = Vector2(-3840, 1072)
+z_index = 2304
+position = Vector2(1984, 2304)
 
 [node name="room_d_death" parent="RoomManager" instance=ExtResource("11_drdnd")]
-position = Vector2(-5760, 1080)
-
-[node name="room_d_hall0" parent="RoomManager" instance=ExtResource("12_gnsmo")]
-position = Vector2(-1920, 2728)
-
-[node name="room_d_corner" parent="RoomManager" instance=ExtResource("13_psl12")]
-position = Vector2(-3840, 2152)
-
-[node name="room_d_boiler" parent="RoomManager" instance=ExtResource("14_2ebs2")]
+z_index = 2160
 position = Vector2(0, 2160)
 
+[node name="room_d_hall0" parent="RoomManager" instance=ExtResource("12_gnsmo")]
+z_index = 3456
+position = Vector2(1984, 3456)
+
+[node name="room_d_corner" parent="RoomManager" instance=ExtResource("13_psl12")]
+z_index = 3456
+position = Vector2(0, 3456)
+
+[node name="room_d_boiler" parent="RoomManager" instance=ExtResource("14_2ebs2")]
+z_index = 3456
+position = Vector2(3968, 3456)
+
 [node name="player_character" parent="." instance=ExtResource("2_jv6wh")]
-position = Vector2(-1112, 2440)
+position = Vector2(4720, 3096)
 
 [node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0
 script = ExtResource("13_ioaeq")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+
+[node name="GUIController" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("17_psl12")

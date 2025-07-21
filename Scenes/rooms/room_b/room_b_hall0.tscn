@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://hdfv4uqe4353"]
+[gd_scene load_steps=7 format=3 uid="uid://hdfv4uqe4353"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_qyikc"]
 [ext_resource type="Texture2D" uid="uid://bs8umcl1h2337" path="res://Backgrounds/bg_b_hall0.png" id="2_p15v1"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_6iyp8"]
+[ext_resource type="PackedScene" uid="uid://co0qn64mooqb6" path="res://Scenes/Prefabs/obj_elevator.tscn" id="4_nu55q"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
 vertices = PackedVector2Array(1130, 877.922, 98, 885.922, 98, 806, 670, 626, 1450, 626, 1450, 602, 1526, 602, 1526, 626, 1910, 626, 1910, 878, 1198, 878, 1198, 910, 1130, 910, 10, 806, 10, 698, 98, 698, 602, 626, 98, 626, 670, 602, 602, 602)
@@ -13,8 +14,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(88, 616, 88, 688, 0, 68
 
 [node name="room_b_hall0" type="Node2D"]
 script = ExtResource("1_qyikc")
-camera_locked = null
-room_height = null
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -33,6 +32,7 @@ position = Vector2(640, 584)
 position = Vector2(1490, 600)
 room_to = "room_c_hall0"
 point_to_id = 2
+locked = true
 
 [node name="t2" parent="transitions" instance=ExtResource("3_6iyp8")]
 position = Vector2(16, 752)
@@ -63,6 +63,13 @@ polygon = PackedVector2Array(0, 824, 48, 824, 48, 896, 1096, 896, 1096, 920, 124
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="room_collision"]
 polygon = PackedVector2Array(0, 680, 48, 680, 48, 608, 568, 608, 568, 576, 704, 576, 704, 608, 1424, 608, 1424, 576, 1560, 576, 1560, 608, 1920, 608, 1920, 0, 0, 0)
+
+[node name="interactables" type="Node2D" parent="."]
+
+[node name="obj_elevator_up" parent="interactables" instance=ExtResource("4_nu55q")]
+position = Vector2(1488, 584)
+room_to = "room_c_hall0"
+transition_id = 2
 
 [editable path="transitions/t0"]
 [editable path="transitions/t2"]

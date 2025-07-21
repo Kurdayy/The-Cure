@@ -19,7 +19,7 @@ func _ready():
 	material.set_shader_parameter("line_thickness", 0)
 	material.set_shader_parameter("line_color", Vector4(outline_color.r, outline_color.g, outline_color.b, outline_color.a))
 	material.resource_local_to_scene = true
-
+	z_index = position.y
 
 ##Default interaction is to delete and set the attached flag
 func on_interact(player: CharacterBody2D):

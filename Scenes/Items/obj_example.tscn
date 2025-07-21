@@ -4,15 +4,17 @@
 [ext_resource type="Script" uid="uid://dph1f8fanmquc" path="res://Scripts/object_interactable.gd" id="2_4wd6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wnjr"]
-size = Vector2(113.778, 128)
+size = Vector2(85.3333, 89.6)
 
 [node name="obj_example" type="Sprite2D"]
+position = Vector2(0, 24)
 scale = Vector2(0.5625, 0.625)
 texture = ExtResource("1_xgon7")
+offset = Vector2(0, -38.4)
 script = ExtResource("2_4wd6q")
 
 [node name="obj_col" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_col"]
-position = Vector2(0, -6.10352e-05)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_6wnjr")

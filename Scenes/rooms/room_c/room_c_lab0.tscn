@@ -6,12 +6,12 @@
 [ext_resource type="Shader" uid="uid://cu3xo10udf3ar" path="res://Scripts/shaders/outline.gdshader" id="4_oihfl"]
 [ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="4_r6uqu"]
 [ext_resource type="Script" uid="uid://c7hifkcvol4i7" path="res://Scenes/Rooms/room_c/obj_fuel.gd" id="5_oihfl"]
-[ext_resource type="Script" uid="uid://dph1f8fanmquc" path="res://Scripts/object_interactable.gd" id="7_6wnjr"]
+[ext_resource type="PackedScene" uid="uid://ty520arcjisd" path="res://Scenes/Items/obj_example.tscn" id="7_6wnjr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wnjr"]
-size = Vector2(113.778, 128)
+size = Vector2(113.778, 102.4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oihfl"]
 resource_local_to_scene = true
@@ -45,23 +45,25 @@ physics_material_override = SubResource("PhysicsMaterial_p15v1")
 polygon = PackedVector2Array(80, 1016, 1840, 1016, 1920, 1080, 0, 1080, 0, 0, 1920, 0, 1920, 1080, 1840, 1016, 1840, 408, 936, 408, 936, 376, 800, 376, 800, 408, 568, 408, 568, 344, 288, 344, 288, 312, 152, 312, 152, 344, 80, 344)
 
 [node name="obj_fuel" type="Sprite2D" parent="."]
-position = Vector2(1072, 456)
+position = Vector2(1072, 480)
 scale = Vector2(0.5625, 0.625)
 texture = ExtResource("4_r6uqu")
+offset = Vector2(0, -38.4)
 script = ExtResource("5_oihfl")
 flag_to_set = 1
 
 [node name="obj_col" type="Area2D" parent="obj_fuel"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_fuel/obj_col"]
-position = Vector2(0, -6.10352e-05)
+position = Vector2(0, -25.5999)
 shape = SubResource("RectangleShape2D_6wnjr")
 
 [node name="obj_fuel2" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_oihfl")
-position = Vector2(1016, 464)
+position = Vector2(1016, 488)
 scale = Vector2(0.533202, 0.570313)
 texture = ExtResource("4_r6uqu")
+offset = Vector2(0, -42.0822)
 script = ExtResource("5_oihfl")
 flag_to_set = 1
 
@@ -71,14 +73,5 @@ flag_to_set = 1
 position = Vector2(0, -6.10352e-05)
 shape = SubResource("RectangleShape2D_6wnjr")
 
-[node name="obj_example" type="Sprite2D" parent="."]
+[node name="obj_example" parent="." instance=ExtResource("7_6wnjr")]
 position = Vector2(1120, 576)
-scale = Vector2(0.5625, 0.625)
-texture = ExtResource("4_r6uqu")
-script = ExtResource("7_6wnjr")
-
-[node name="obj_col" type="Area2D" parent="obj_example"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_example/obj_col"]
-position = Vector2(0, -6.10352e-05)
-shape = SubResource("RectangleShape2D_6wnjr")

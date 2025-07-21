@@ -41,7 +41,7 @@ func deactivate_transition():
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if (active_transition && body == Global.player):
+	if (active_transition && body == Global.player && !locked):
 		print("transition ", parent.name, " - ", name, " entered by ", body.name)
 		var p_offset: Vector2 = global_position - body.global_position
 		#based on direction add tweak dist and flip offset of the corresponding value
