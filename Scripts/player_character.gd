@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		#additionally check for updates to interactables after moving
 		move_and_slide()
 		update_nearest_interactable()
-	z_index = global_position.y
+	z_index = global_position.y - Global.room_manager.current_room.position.y
 	
 	
 

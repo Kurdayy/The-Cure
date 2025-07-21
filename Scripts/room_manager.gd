@@ -37,8 +37,9 @@ func update_current_room(new_room: Room):
 	camera.global_position = new_room.global_position
 	if !current_room.camera_locked:
 		camera.camera_follow = true
+		camera.global_position.y += new_room.room_height
 		camera.limit_hor = Vector2(current_room.global_position.x, current_room.global_position.x)
-		camera.limit_ver = Vector2(current_room.global_position.y - current_room.room_height, current_room.global_position.y )
+		camera.limit_ver = Vector2(current_room.global_position.y, current_room.global_position.y + current_room.room_height)
 	else:
 		camera.camera_follow = false
 		camera.limit_hor = Vector2(current_room.global_position.x, current_room.global_position.x)
@@ -49,6 +50,7 @@ func update_current_room(new_room: Room):
 		c.set_process(true)
 		c.set_physics_process(true)
 	print("Changed current room to ", current_room)
+	
 	
 	
 func room_transition(room_from: Room, room_to_name: String, point_to_id: int, offset: Vector2):
@@ -71,5 +73,5 @@ func room_transition(room_from: Room, room_to_name: String, point_to_id: int, of
 	
 	transition.deactivate_transition() #so we dont collide when we first enter
 	player.global_position = transition.global_position + offset #mirror offset when we touch the zone
-	player.z_index = player.global_position.y
+	player.z_index = player.global_position.y - current_room.position.y
 	

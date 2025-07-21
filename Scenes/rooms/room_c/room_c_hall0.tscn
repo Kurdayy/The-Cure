@@ -50,7 +50,6 @@ polygon = PackedVector2Array(216, 1000, 448, 1000, 448, 1032, 592, 1032, 592, 10
 
 [node name="obj_elevator_up" parent="." instance=ExtResource("4_vpal8")]
 position = Vector2(1490, 688)
-scale = Vector2(1.75, 2.4375)
 room_to = "room_b_hall0"
 transition_id = 1
 

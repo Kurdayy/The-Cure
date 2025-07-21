@@ -13,13 +13,12 @@ room_height = 2160
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(593, -941)
+position = Vector2(593, 1219)
 texture = ExtResource("2_xe0tb")
 centered = false
 offset = Vector2(-593, -1219)
 
 [node name="transitions" type="Node2D" parent="."]
-position = Vector2(0, -2160)
 
 [node name="t0" parent="transitions" instance=ExtResource("3_eudex")]
 position = Vector2(960, 3224)
@@ -30,7 +29,6 @@ point_to_id = 1
 polygon = PackedVector2Array(-72, 0, 248, 0, 248, 32, -72, 32)
 
 [node name="room_collision" type="StaticBody2D" parent="."]
-position = Vector2(0, -2160)
 physics_material_override = SubResource("PhysicsMaterial_p15v1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]

@@ -9,7 +9,7 @@ var limit_ver: Vector2 = Vector2(0, 0)
 
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("player_character")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if !camera_follow:
 		return

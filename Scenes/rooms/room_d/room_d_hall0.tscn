@@ -9,6 +9,7 @@
 
 [node name="room_d_hall0" type="Node2D"]
 script = ExtResource("1_kunyl")
+room_z_offset = null
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]

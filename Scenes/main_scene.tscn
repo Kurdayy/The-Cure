@@ -26,6 +26,7 @@ current_room = NodePath("room_c_lab0")
 
 [node name="room_b_hall0" parent="RoomManager" instance=ExtResource("6_maf8m")]
 position = Vector2(3968, 0)
+room_z_offset = 0
 
 [node name="room_b_hall1" parent="RoomManager" instance=ExtResource("7_huasi")]
 position = Vector2(5952, 0)
@@ -34,43 +35,36 @@ position = Vector2(5952, 0)
 position = Vector2(1984, 0)
 
 [node name="room_b_arm" parent="RoomManager" instance=ExtResource("6_huasi")]
-z_index = 1152
 position = Vector2(3968, 1152)
 
 [node name="room_c_hall1" parent="RoomManager" instance=ExtResource("7_m1efj")]
-z_index = 2304
 position = Vector2(7936, 2304)
 
 [node name="room_c_hall0" parent="RoomManager" instance=ExtResource("8_mai8y")]
-z_index = 2304
 position = Vector2(5952, 2304)
+room_z_offset = 0
 
 [node name="room_c_closet" parent="RoomManager" instance=ExtResource("8_76v2p")]
-z_index = 1152
 position = Vector2(7936, 1152)
 
 [node name="room_c_lab0" parent="RoomManager" instance=ExtResource("9_drdnd")]
-z_index = 2304
 position = Vector2(3968, 2304)
+room_z_offset = 0
 
 [node name="room_c_lab1" parent="RoomManager" instance=ExtResource("10_ioaeq")]
-z_index = 2304
 position = Vector2(1984, 2304)
 
 [node name="room_d_death" parent="RoomManager" instance=ExtResource("11_drdnd")]
-z_index = 2160
-position = Vector2(0, 2160)
+room_z_offset = 2160
 
 [node name="room_d_hall0" parent="RoomManager" instance=ExtResource("12_gnsmo")]
-z_index = 3456
 position = Vector2(1984, 3456)
+room_z_offset = 0
 
 [node name="room_d_corner" parent="RoomManager" instance=ExtResource("13_psl12")]
-z_index = 3456
 position = Vector2(0, 3456)
 
 [node name="room_d_boiler" parent="RoomManager" instance=ExtResource("14_2ebs2")]
-z_index = 3456
 position = Vector2(3968, 3456)
 
 [node name="player_character" parent="." instance=ExtResource("2_jv6wh")]

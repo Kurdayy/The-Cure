@@ -21,6 +21,7 @@ shader_parameter/line_thickness = 1.0
 
 [node name="room_c_lab0" type="Node2D"]
 script = ExtResource("1_nwivt")
+room_z_offset = null
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
