@@ -13,8 +13,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(736, 344, 736, 944, 118
 
 [node name="room_b_mng" type="Node2D"]
 script = ExtResource("1_mf4d0")
-camera_locked = null
-room_height = null
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]

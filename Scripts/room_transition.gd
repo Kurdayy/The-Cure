@@ -40,8 +40,9 @@ func deactivate_transition():
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("transition ", name, " entered by ", body.name)
-	if (active_transition && body.name == "player_character"):
+	
+	if (active_transition && body == Global.player):
+		print("transition ", parent.name, " - ", name, " entered by ", body.name)
 		var p_offset: Vector2 = global_position - body.global_position
 		#based on direction add tweak dist and flip offset of the corresponding value
 		if dirh:
@@ -51,10 +52,10 @@ func _on_body_entered(body: Node2D) -> void:
 			p_offset.y = (p_offset.y) * -1
 			p_offset.x *= tweak_dist
 			
-		room_transition.emit(parent, room_to, point_to_id, body, p_offset)
+		room_transition.emit(parent, room_to, point_to_id, p_offset)
 
 
 func _on_body_exited(body: Node2D) -> void:
-	print("transition ", name, " exited by ", body.name)
-	if (!locked && body.name == "player_character"):
+	if (!locked && body == Global.player):
+		print("transition ", parent.name, " - ", name, " exited by ", body.name)
 		active_transition = true

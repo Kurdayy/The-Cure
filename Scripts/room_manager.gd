@@ -51,7 +51,7 @@ func update_current_room(new_room: Room):
 	print("Changed current room to ", current_room)
 	
 	
-func room_transition(room_from: Room, room_to_name: String, point_to_id: int, collider: Node2D, offset: Vector2):
+func room_transition(room_from: Room, room_to_name: String, point_to_id: int, offset: Vector2):
 	
 	var room_to: Room = get_room_from_name(room_to_name)
 	if room_to == null:

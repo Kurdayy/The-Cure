@@ -1,10 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv8lg7bqhtjtl"]
+[gd_scene load_steps=11 format=3 uid="uid://bv8lg7bqhtjtl"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_nwivt"]
 [ext_resource type="Texture2D" uid="uid://45wew2lx7dli" path="res://Backgrounds/bg_c_lab0.png" id="2_nwivt"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_hh6yy"]
+[ext_resource type="Shader" uid="uid://cu3xo10udf3ar" path="res://Scripts/shaders/outline.gdshader" id="4_oihfl"]
+[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="4_r6uqu"]
+[ext_resource type="Script" uid="uid://c7hifkcvol4i7" path="res://Scenes/Rooms/room_c/obj_fuel.gd" id="5_oihfl"]
+[ext_resource type="Script" uid="uid://dph1f8fanmquc" path="res://Scripts/object_interactable.gd" id="7_6wnjr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wnjr"]
+size = Vector2(113.778, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oihfl"]
+resource_local_to_scene = true
+shader = ExtResource("4_oihfl")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [node name="room_c_lab0" type="Node2D"]
 script = ExtResource("1_nwivt")
@@ -30,3 +43,42 @@ physics_material_override = SubResource("PhysicsMaterial_p15v1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
 polygon = PackedVector2Array(80, 1016, 1840, 1016, 1920, 1080, 0, 1080, 0, 0, 1920, 0, 1920, 1080, 1840, 1016, 1840, 408, 936, 408, 936, 376, 800, 376, 800, 408, 568, 408, 568, 344, 288, 344, 288, 312, 152, 312, 152, 344, 80, 344)
+
+[node name="obj_fuel" type="Sprite2D" parent="."]
+position = Vector2(1072, 456)
+scale = Vector2(0.5625, 0.625)
+texture = ExtResource("4_r6uqu")
+script = ExtResource("5_oihfl")
+flag_to_set = 1
+
+[node name="obj_col" type="Area2D" parent="obj_fuel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_fuel/obj_col"]
+position = Vector2(0, -6.10352e-05)
+shape = SubResource("RectangleShape2D_6wnjr")
+
+[node name="obj_fuel2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oihfl")
+position = Vector2(1016, 464)
+scale = Vector2(0.533202, 0.570313)
+texture = ExtResource("4_r6uqu")
+script = ExtResource("5_oihfl")
+flag_to_set = 1
+
+[node name="obj_col" type="Area2D" parent="obj_fuel2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_fuel2/obj_col"]
+position = Vector2(0, -6.10352e-05)
+shape = SubResource("RectangleShape2D_6wnjr")
+
+[node name="obj_example" type="Sprite2D" parent="."]
+position = Vector2(1120, 576)
+scale = Vector2(0.5625, 0.625)
+texture = ExtResource("4_r6uqu")
+script = ExtResource("7_6wnjr")
+
+[node name="obj_col" type="Area2D" parent="obj_example"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_example/obj_col"]
+position = Vector2(0, -6.10352e-05)
+shape = SubResource("RectangleShape2D_6wnjr")

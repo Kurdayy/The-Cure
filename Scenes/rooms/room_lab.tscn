@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf1bivsj66gws"]
+[gd_scene load_steps=6 format=3 uid="uid://bl5l28rx61re4"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_oq0nc"]
-[ext_resource type="Texture2D" uid="uid://buo4co3asryqy" path="res://Backgrounds/test_background_001.png" id="1_wfm5n"]
 [ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/room_transition.gd" id="2_wfm5n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n1tvx"]
+load_path = "res://.godot/imported/test_background_001.png-80e0e68086f14207101f55546f3cb121.ctex"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
 vertices = PackedVector2Array(438, 322, 1830, 322, 1830, 1006, 90, 1006, 90, 322, 330, 322, 438, 290, 330, 290)
@@ -13,12 +15,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(80, 312, 80, 1016, 1840
 
 [node name="room_lab" type="Node2D"]
 script = ExtResource("1_oq0nc")
-camera_locked = null
-room_height = null
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
-texture = ExtResource("1_wfm5n")
+texture = SubResource("CompressedTexture2D_n1tvx")
 centered = false
 
 [node name="room_nav" type="NavigationRegion2D" parent="."]
