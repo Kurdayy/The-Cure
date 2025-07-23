@@ -14,7 +14,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(88, 616, 88, 688, 0, 68
 
 [node name="room_b_hall0" type="Node2D"]
 script = ExtResource("1_qyikc")
-room_z_offset = null
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]

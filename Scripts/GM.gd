@@ -5,7 +5,7 @@ class_name GM
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("player_character")
 @onready var camera: Camera2D = get_tree().current_scene.get_node("MainCamera")
 @onready var room_manager: Node2D = get_tree().current_scene.get_node("RoomManager")
-@onready var gui_control: Control = get_tree().current_scene.get_node("GUI").get_child(0)
+@onready var gui_control: GUI_Controller = get_tree().current_scene.get_node("GUI").get_child(0)
 
 var GlobalFlags: Array[bool] 
 @onready var TotalFlags: int = Flag.size()

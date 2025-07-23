@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blwp2648a4fwc"]
+[gd_scene load_steps=22 format=3 uid="uid://blwp2648a4fwc"]
 
 [ext_resource type="Script" uid="uid://buv72kqfwuu4e" path="res://Scripts/room_manager.gd" id="1_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/Prefabs/player_character.tscn" id="2_jv6wh"]
@@ -17,6 +17,21 @@
 [ext_resource type="PackedScene" uid="uid://bpqtn6drelxa" path="res://Scenes/Rooms/room_d/room_d_corner.tscn" id="13_psl12"]
 [ext_resource type="PackedScene" uid="uid://c2x2hss4usgk0" path="res://Scenes/Rooms/room_d/room_d_boiler.tscn" id="14_2ebs2"]
 [ext_resource type="Script" uid="uid://oskfgolfvi7b" path="res://Scenes/gui_controller.gd" id="17_psl12"]
+[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="18_2ebs2"]
+[ext_resource type="Script" uid="uid://drt8cmoipvyhj" path="res://Scenes/inventory_slot.gd" id="18_oyb3p"]
+[ext_resource type="Texture2D" uid="uid://bg7vlv6wglreh" path="res://Sprites/the_hand_that_feeds.png" id="20_jvnna"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyb3p"]
+bg_color = Color(0.0192187, 0.0386437, 0.148251, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="MainScene" type="Node2D"]
 
@@ -26,7 +41,6 @@ current_room = NodePath("room_c_lab0")
 
 [node name="room_b_hall0" parent="RoomManager" instance=ExtResource("6_maf8m")]
 position = Vector2(3968, 0)
-room_z_offset = 0
 
 [node name="room_b_hall1" parent="RoomManager" instance=ExtResource("7_huasi")]
 position = Vector2(5952, 0)
@@ -42,14 +56,12 @@ position = Vector2(7936, 2304)
 
 [node name="room_c_hall0" parent="RoomManager" instance=ExtResource("8_mai8y")]
 position = Vector2(5952, 2304)
-room_z_offset = 0
 
 [node name="room_c_closet" parent="RoomManager" instance=ExtResource("8_76v2p")]
 position = Vector2(7936, 1152)
 
 [node name="room_c_lab0" parent="RoomManager" instance=ExtResource("9_drdnd")]
 position = Vector2(3968, 2304)
-room_z_offset = 0
 
 [node name="room_c_lab1" parent="RoomManager" instance=ExtResource("10_ioaeq")]
 position = Vector2(1984, 2304)
@@ -59,7 +71,6 @@ room_z_offset = 2160
 
 [node name="room_d_hall0" parent="RoomManager" instance=ExtResource("12_gnsmo")]
 position = Vector2(1984, 3456)
-room_z_offset = 0
 
 [node name="room_d_corner" parent="RoomManager" instance=ExtResource("13_psl12")]
 position = Vector2(0, 3456)
@@ -84,3 +95,306 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("17_psl12")
+
+[node name="InventoryControl" type="HBoxContainer" parent="GUI/GUIController"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 1024.0
+offset_right = 1856.0
+offset_bottom = 1216.0
+theme_override_constants/separation = 10
+
+[node name="Slot0" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+layout_mode = 2
+script = ExtResource("18_oyb3p")
+
+[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot0"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot0/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_2ebs2")
+expand_mode = 2
+
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot0/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot1" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+layout_mode = 2
+script = ExtResource("18_oyb3p")
+
+[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot1"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot1/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_2ebs2")
+expand_mode = 2
+
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot1/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+layout_mode = 2
+script = ExtResource("18_oyb3p")
+
+[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_2ebs2")
+expand_mode = 2
+
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot2/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+layout_mode = 2
+script = ExtResource("18_oyb3p")
+
+[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot3/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_2ebs2")
+expand_mode = 2
+
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot3/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot4" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+layout_mode = 2
+script = ExtResource("18_oyb3p")
+
+[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot4"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot4/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_2ebs2")
+expand_mode = 2
+
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot4/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot5" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+layout_mode = 2
+script = ExtResource("18_oyb3p")
+
+[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot5"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot5/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_2ebs2")
+expand_mode = 2
+
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot5/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotBig" type="PanelContainer" parent="GUI/GUIController"]
+offset_left = 1600.0
+offset_top = 1024.0
+offset_right = 1856.0
+offset_bottom = 1216.0
+script = ExtResource("18_oyb3p")
+item_name = "Empty"
+empty = false
+texture = ExtResource("20_jvnna")
+
+[node name="Panel" type="Panel" parent="GUI/GUIController/SlotBig"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/SlotBig/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -96.0
+offset_right = 128.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_jvnna")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/SlotBig/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot1/Panel" to="GUI/GUIController/InventoryControl/Slot1" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot1/Panel" to="GUI/GUIController/InventoryControl/Slot1" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot1/Panel" to="GUI/GUIController/InventoryControl/Slot1" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot2/Panel" to="GUI/GUIController/InventoryControl/Slot2" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot2/Panel" to="GUI/GUIController/InventoryControl/Slot2" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot2/Panel" to="GUI/GUIController/InventoryControl/Slot2" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot3/Panel" to="GUI/GUIController/InventoryControl/Slot3" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot3/Panel" to="GUI/GUIController/InventoryControl/Slot3" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot3/Panel" to="GUI/GUIController/InventoryControl/Slot3" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot4/Panel" to="GUI/GUIController/InventoryControl/Slot4" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot4/Panel" to="GUI/GUIController/InventoryControl/Slot4" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot4/Panel" to="GUI/GUIController/InventoryControl/Slot4" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot5/Panel" to="GUI/GUIController/InventoryControl/Slot5" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot5/Panel" to="GUI/GUIController/InventoryControl/Slot5" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot5/Panel" to="GUI/GUIController/InventoryControl/Slot5" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_mouse_exited"]

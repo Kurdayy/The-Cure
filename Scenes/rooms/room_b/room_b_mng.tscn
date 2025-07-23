@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cthlmpw10bjwp"]
+[gd_scene load_steps=7 format=3 uid="uid://cthlmpw10bjwp"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_mf4d0"]
 [ext_resource type="Texture2D" uid="uid://c8y3j2nc4nbo7" path="res://Backgrounds/bg_b_mng.png" id="2_mf4d0"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_mf4d0"]
+[ext_resource type="PackedScene" uid="uid://4xwtd302tymt" path="res://Scenes/Items/obj_radio.tscn" id="4_73gpo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
 vertices = PackedVector2Array(1174, 690, 1230, 690, 1230, 806, 1174, 806, 1174, 934, 746, 934, 746, 354, 1174, 354)
@@ -38,5 +39,8 @@ physics_material_override = SubResource("PhysicsMaterial_mf4d0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
 polygon = PackedVector2Array(0, 0, 712, 344, 712, 944, 1208, 944, 1208, 824, 1264, 824, 1264, 680, 1208, 680, 1208, 344, 712, 344, 0, 0, 1920, 0, 1920, 1080, 0, 1080)
+
+[node name="obj_radio" parent="." instance=ExtResource("4_73gpo")]
+position = Vector2(1008, 480)
 
 [editable path="transitions/t0"]

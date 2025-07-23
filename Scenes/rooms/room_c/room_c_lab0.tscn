@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bv8lg7bqhtjtl"]
+[gd_scene load_steps=10 format=3 uid="uid://bv8lg7bqhtjtl"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_nwivt"]
 [ext_resource type="Texture2D" uid="uid://45wew2lx7dli" path="res://Backgrounds/bg_c_lab0.png" id="2_nwivt"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" uid="uid://cu3xo10udf3ar" path="res://Scripts/shaders/outline.gdshader" id="4_oihfl"]
 [ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="4_r6uqu"]
 [ext_resource type="Script" uid="uid://c7hifkcvol4i7" path="res://Scenes/Rooms/room_c/obj_fuel.gd" id="5_oihfl"]
-[ext_resource type="PackedScene" uid="uid://ty520arcjisd" path="res://Scenes/Items/obj_example.tscn" id="7_6wnjr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
 
@@ -21,7 +20,6 @@ shader_parameter/line_thickness = 1.0
 
 [node name="room_c_lab0" type="Node2D"]
 script = ExtResource("1_nwivt")
-room_z_offset = null
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -74,5 +72,17 @@ flag_to_set = 1
 position = Vector2(0, -6.10352e-05)
 shape = SubResource("RectangleShape2D_6wnjr")
 
-[node name="obj_example" parent="." instance=ExtResource("7_6wnjr")]
-position = Vector2(1120, 576)
+[node name="obj_fuel3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oihfl")
+position = Vector2(1208, 624)
+scale = Vector2(0.533202, 0.570313)
+texture = ExtResource("4_r6uqu")
+offset = Vector2(0, -42.0822)
+script = ExtResource("5_oihfl")
+flag_to_set = 1
+
+[node name="obj_col" type="Area2D" parent="obj_fuel3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_fuel3/obj_col"]
+position = Vector2(0, -6.10352e-05)
+shape = SubResource("RectangleShape2D_6wnjr")
