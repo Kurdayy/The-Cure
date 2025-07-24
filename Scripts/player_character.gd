@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	input_check()
+	#input_check()
 	if !input_enabled:
 		return
 		
@@ -131,14 +131,13 @@ func move_check_v(dir: String, oppdir: String, dirint: int) -> void:
 		else:
 			input_map.y = 0
 	
-	
-	
-func input_check() -> void:
-	if Input.is_action_just_pressed("interact") && input_enabled:
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") && input_enabled:
 		print("interact at ", get_viewport().get_mouse_position())
 		try_interact()
 		
-	elif Input.is_action_just_pressed("inventory") && input_enabled:
+	elif event.is_action_pressed("inventory") && input_enabled:
 		print("open inventory")
 		Global.list_flags()
 	
@@ -147,6 +146,23 @@ func input_check() -> void:
 	move_check_h("move_right", "move_left", 1)
 	move_check_v("move_up", "move_down", -1)
 	move_check_v("move_down", "move_up", 1)
+	
+	
+#func input_check() -> void:
+	#
+	#if Input.is_action_just_pressed("interact") && input_enabled:
+		#print("interact at ", get_viewport().get_mouse_position())
+		#try_interact()
+		#
+	#elif Input.is_action_just_pressed("inventory") && input_enabled:
+		#print("open inventory")
+		#Global.list_flags()
+	#
+	##perform movement input checks and update the input map with new values
+	#move_check_h("move_left", "move_right", -1)
+	#move_check_h("move_right", "move_left", 1)
+	#move_check_v("move_up", "move_down", -1)
+	#move_check_v("move_down", "move_up", 1)
 
 
 

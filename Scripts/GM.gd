@@ -5,11 +5,13 @@ class_name GM
 #@onready var player: CharacterBody2D = get_tree().current_scene.get_node("player_character")
 @onready var camera: Camera2D = get_tree().current_scene.get_node("MainCamera")
 @onready var room_manager: Node2D = get_tree().current_scene.get_node("RoomManager")
+@onready var interactable_scene = get_tree().current_scene.get_node("Interactable").get_child(0)
 #@onready var gui_control: GUI_Controller = get_tree().current_scene.get_node("GUI").get_child(0)
 var gui_control: GUI_Controller
 var player: CharacterBody2D
 @onready var main_menu = preload("res://Scenes/Prefabs/main_menu.tscn")
 @onready var pause_menu = preload("res://Scenes/Prefabs/pause_menu.tscn")
+
 
 #@onready var ending_slide_default = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_default.tscn")
 var current_ending: Ending = Ending.DEFAULT
@@ -22,7 +24,8 @@ var game_paused: bool = false
 var game_active: bool = false
 const time_max: float = 9.9
 
-const SHOW_MAIN_MENU_ON_STARTUP: bool = false
+const DEBUG_SHOW_MAIN_MENU_ON_STARTUP: bool = false
+const DEBUG_TIMER_ENABLED: bool = false
 
 enum Flag {
 	Empty,
@@ -42,7 +45,7 @@ func _ready():
 	
 	gui_control = get_tree().current_scene.get_node("GUI").get_child(0)
 	player = get_tree().current_scene.get_node("player_character")
-	if SHOW_MAIN_MENU_ON_STARTUP:
+	if DEBUG_SHOW_MAIN_MENU_ON_STARTUP:
 		player.input_enabled = false
 		spawn_main_menu()
 	else:
@@ -87,7 +90,7 @@ func start_game():
 	
 	
 func _process(delta):
-	if time_enabled:
+	if time_enabled && DEBUG_TIMER_ENABLED:
 		time_elapsed += delta
 		gui_control.timer_update(time_elapsed)
 		if time_elapsed >= time_max:
@@ -171,5 +174,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif !game_paused:
 			pause()
 		
+
+
+	
 	
 	
