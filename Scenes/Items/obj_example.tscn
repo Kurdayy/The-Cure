@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="1_xgon7"]
 [ext_resource type="Script" uid="uid://dph1f8fanmquc" path="res://Scripts/object_interactable.gd" id="2_4wd6q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wnjr"]
-size = Vector2(85.3333, 89.6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw78p"]
+size = Vector2(116.363, 140.8)
 
 [node name="obj_example" type="Sprite2D"]
 position = Vector2(0, 24)
@@ -17,4 +17,4 @@ script = ExtResource("2_4wd6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_col"]
 position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_6wnjr")
+shape = SubResource("RectangleShape2D_lw78p")

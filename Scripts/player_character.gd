@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var movement_accel: float = 400
 @export var movement_deccel: float = 600
 
+@export var starting_position: Vector2
+
 #global references
 #@onready var camera: Camera2D = get_tree().current_scene.get_node("MainCamera")
 

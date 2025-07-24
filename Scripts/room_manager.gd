@@ -1,7 +1,8 @@
 extends Node2D
 
 var rooms: Array[Room]
-@export var current_room: Room #set this to set the starting room
+@export var starting_room: Room
+var current_room: Room #set this to set the starting room
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("player_character")
 @onready var camera: Camera2D = get_tree().current_scene.get_node("MainCamera")
 
@@ -20,7 +21,8 @@ func _ready():
 			t.connect("room_transition", room_transition)
 		r.hide()
 	
-	update_current_room(current_room)
+	update_current_room(starting_room)
+
 
 
 #returns first room by string in our array, otherwise returns null			
@@ -73,5 +75,5 @@ func room_transition(room_from: Room, room_to_name: String, point_to_id: int, of
 	
 	transition.deactivate_transition() #so we dont collide when we first enter
 	player.global_position = transition.global_position + offset #mirror offset when we touch the zone
-	player.z_index = player.global_position.y - current_room.position.y
+	player.z_index = int(player.global_position.y - current_room.position.y)
 	

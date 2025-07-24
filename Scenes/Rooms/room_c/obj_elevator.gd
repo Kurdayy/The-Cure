@@ -17,9 +17,9 @@ func on_interact(player: CharacterBody2D):
 	if diff.length() > max_interact_dist:
 		return
 		
-	if Global.GlobalFlags[Global.Flag.KeycardObtained]:
-		Global.gui_control.elevator_transition(transition_load, transition_finish)
-		Global.player.input_enabled = false
+	#if Global.GlobalFlags[Global.Flag.KeycardObtained]:
+	Global.gui_control.elevator_transition(transition_load, transition_finish)
+	Global.player.input_enabled = false
 		
 
 func transition_load():

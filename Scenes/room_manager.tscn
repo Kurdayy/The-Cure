@@ -1,0 +1,59 @@
+[gd_scene load_steps=15 format=3 uid="uid://c1kaqte6jcl66"]
+
+[ext_resource type="Script" uid="uid://buv72kqfwuu4e" path="res://Scripts/room_manager.gd" id="1_sk33w"]
+[ext_resource type="PackedScene" uid="uid://hdfv4uqe4353" path="res://Scenes/Rooms/room_b/room_b_hall0.tscn" id="2_bt1vw"]
+[ext_resource type="PackedScene" uid="uid://dc77jk1r7smmd" path="res://Scenes/Rooms/room_b/room_b_hall1.tscn" id="3_cup37"]
+[ext_resource type="PackedScene" uid="uid://cthlmpw10bjwp" path="res://Scenes/Rooms/room_b/room_b_mng.tscn" id="4_ix3i8"]
+[ext_resource type="PackedScene" uid="uid://btpx2duyt03ii" path="res://Scenes/Rooms/room_b/room_b_arm.tscn" id="5_u47hi"]
+[ext_resource type="PackedScene" uid="uid://bb3idiq8o5ne5" path="res://Scenes/Rooms/room_c/room_c_hall1.tscn" id="6_yfeu0"]
+[ext_resource type="PackedScene" uid="uid://bj6cmk8i1h2lw" path="res://Scenes/Rooms/room_c/room_c_hall0.tscn" id="7_uks2t"]
+[ext_resource type="PackedScene" uid="uid://bl80gr8q56yku" path="res://Scenes/Rooms/room_c/room_c_closet.tscn" id="8_jvfuk"]
+[ext_resource type="PackedScene" uid="uid://bv8lg7bqhtjtl" path="res://Scenes/Rooms/room_c/room_c_lab0.tscn" id="9_tto5l"]
+[ext_resource type="PackedScene" uid="uid://celd2i17rdrt8" path="res://Scenes/Rooms/room_c/room_c_lab1.tscn" id="10_3lyt4"]
+[ext_resource type="PackedScene" uid="uid://bdyrxhj87100g" path="res://Scenes/Rooms/room_d/room_d_death.tscn" id="11_3gr3k"]
+[ext_resource type="PackedScene" uid="uid://oihdd8cstyt2" path="res://Scenes/Rooms/room_d/room_d_hall0.tscn" id="12_l0vvm"]
+[ext_resource type="PackedScene" uid="uid://bpqtn6drelxa" path="res://Scenes/Rooms/room_d/room_d_corner.tscn" id="13_vt1pb"]
+[ext_resource type="PackedScene" uid="uid://c2x2hss4usgk0" path="res://Scenes/Rooms/room_d/room_d_boiler.tscn" id="14_8v68k"]
+
+[node name="RoomManager" type="Node2D" node_paths=PackedStringArray("starting_room")]
+script = ExtResource("1_sk33w")
+starting_room = NodePath("room_c_lab0")
+
+[node name="room_b_hall0" parent="." instance=ExtResource("2_bt1vw")]
+position = Vector2(3968, 0)
+
+[node name="room_b_hall1" parent="." instance=ExtResource("3_cup37")]
+position = Vector2(5952, 0)
+
+[node name="room_b_mng" parent="." instance=ExtResource("4_ix3i8")]
+position = Vector2(1984, 0)
+
+[node name="room_b_arm" parent="." instance=ExtResource("5_u47hi")]
+position = Vector2(3968, 1152)
+
+[node name="room_c_hall1" parent="." instance=ExtResource("6_yfeu0")]
+position = Vector2(7936, 2304)
+
+[node name="room_c_hall0" parent="." instance=ExtResource("7_uks2t")]
+position = Vector2(5952, 2304)
+
+[node name="room_c_closet" parent="." instance=ExtResource("8_jvfuk")]
+position = Vector2(7936, 1152)
+
+[node name="room_c_lab0" parent="." instance=ExtResource("9_tto5l")]
+position = Vector2(3968, 2304)
+
+[node name="room_c_lab1" parent="." instance=ExtResource("10_3lyt4")]
+position = Vector2(1984, 2304)
+
+[node name="room_d_death" parent="." instance=ExtResource("11_3gr3k")]
+room_z_offset = 2160
+
+[node name="room_d_hall0" parent="." instance=ExtResource("12_l0vvm")]
+position = Vector2(1984, 3456)
+
+[node name="room_d_corner" parent="." instance=ExtResource("13_vt1pb")]
+position = Vector2(0, 3456)
+
+[node name="room_d_boiler" parent="." instance=ExtResource("14_8v68k")]
+position = Vector2(3968, 3456)

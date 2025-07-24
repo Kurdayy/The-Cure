@@ -5,7 +5,7 @@ var first_interact: bool = true
 var radio_on: bool = false
 
 
-func on_interact(player: CharacterBody2D):
+func on_interact(_player: CharacterBody2D):
 	print("Hello kitty is the best!")
 	
 	if first_interact:

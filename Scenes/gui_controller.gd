@@ -16,6 +16,9 @@ var time_elapsed: float = 0
 var fade_in: bool = true
 var transition_object
 @onready var transition_prefab = preload("res://Scenes/Prefabs/elevator_transition.tscn")
+@onready var TimerControl = $TimerControl
+@onready var TimerLabel = $TimerControl/TimeLabel
+var tmax = 60000 # 60 seconds
 
 
 
@@ -37,6 +40,7 @@ func _ready():
 	
 	#Inventory setup for slots
 	inventory_control = $InventoryControl
+	
 	var idx = 0
 	for c in inventory_control.get_children(false):
 		if c is InventorySlot:
@@ -48,13 +52,35 @@ func _ready():
 	
 	update_inventory_gui()
 	
+
+#Reset variables and reload our ready function
+func reset_inventory():
+	inventory.clear()
+	inventory_gui_slots.clear()
+	inventory_big_slot = null
+	_ready()
 	
+	
+#update timer based on time in ms
+func timer_update(time: float):
+	var tms = int((int(time * 1000) % 1000) / 10.0)
+	var tsec:int = floor(time)
+	var tsformat = "%0*d"
+	var msformat = "%0*d"
+	TimerLabel.text = "00:" + tsformat % [2, 59 - tsec] + ":" + msformat % [2, 99 - tms]
+
+
+func timer_finish():
+	TimerLabel.text = "00:00:00"
+
+
 ##Attempts to add an item to the inventory, can add big items to the double slot. Returns a value based on success.	
 func add_inventory_item(item: Item, bigslot: bool = false) -> bool:
 	if bigslot:
 		if inventory_big == inventory_empty_hand:
 			inventory_big = item
 			inventory_big_slot.import_item(inventory_big)
+			inventory_big_slot.animate_pickup()
 			return true
 		else:
 			print("Item already held, can't pick up.")
@@ -63,6 +89,7 @@ func add_inventory_item(item: Item, bigslot: bool = false) -> bool:
 	if (inventory.size() < inventory_max_size):
 		inventory.append(item)
 		update_inventory_gui()
+		inventory_gui_slots[inventory.size() - 1].animate_pickup()
 		return true
 	else:
 		print("Inventory too full")

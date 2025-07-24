@@ -1,21 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://blwp2648a4fwc"]
+[gd_scene load_steps=10 format=3 uid="uid://blwp2648a4fwc"]
 
-[ext_resource type="Script" uid="uid://buv72kqfwuu4e" path="res://Scripts/room_manager.gd" id="1_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://c1kaqte6jcl66" path="res://Scenes/room_manager.tscn" id="1_maf8m"]
 [ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/Prefabs/player_character.tscn" id="2_jv6wh"]
-[ext_resource type="PackedScene" uid="uid://btpx2duyt03ii" path="res://Scenes/Rooms/room_b/room_b_arm.tscn" id="6_huasi"]
-[ext_resource type="PackedScene" uid="uid://hdfv4uqe4353" path="res://Scenes/Rooms/room_b/room_b_hall0.tscn" id="6_maf8m"]
-[ext_resource type="PackedScene" uid="uid://dc77jk1r7smmd" path="res://Scenes/Rooms/room_b/room_b_hall1.tscn" id="7_huasi"]
-[ext_resource type="PackedScene" uid="uid://bb3idiq8o5ne5" path="res://Scenes/Rooms/room_c/room_c_hall1.tscn" id="7_m1efj"]
-[ext_resource type="PackedScene" uid="uid://bl80gr8q56yku" path="res://Scenes/Rooms/room_c/room_c_closet.tscn" id="8_76v2p"]
-[ext_resource type="PackedScene" uid="uid://cthlmpw10bjwp" path="res://Scenes/Rooms/room_b/room_b_mng.tscn" id="8_m1efj"]
-[ext_resource type="PackedScene" uid="uid://bj6cmk8i1h2lw" path="res://Scenes/Rooms/room_c/room_c_hall0.tscn" id="8_mai8y"]
-[ext_resource type="PackedScene" uid="uid://bv8lg7bqhtjtl" path="res://Scenes/Rooms/room_c/room_c_lab0.tscn" id="9_drdnd"]
-[ext_resource type="PackedScene" uid="uid://celd2i17rdrt8" path="res://Scenes/Rooms/room_c/room_c_lab1.tscn" id="10_ioaeq"]
-[ext_resource type="PackedScene" uid="uid://bdyrxhj87100g" path="res://Scenes/Rooms/room_d/room_d_death.tscn" id="11_drdnd"]
-[ext_resource type="PackedScene" uid="uid://oihdd8cstyt2" path="res://Scenes/Rooms/room_d/room_d_hall0.tscn" id="12_gnsmo"]
 [ext_resource type="Script" uid="uid://c1rbfreb0e7e7" path="res://Scripts/main_camera.gd" id="13_ioaeq"]
-[ext_resource type="PackedScene" uid="uid://bpqtn6drelxa" path="res://Scenes/Rooms/room_d/room_d_corner.tscn" id="13_psl12"]
-[ext_resource type="PackedScene" uid="uid://c2x2hss4usgk0" path="res://Scenes/Rooms/room_d/room_d_boiler.tscn" id="14_2ebs2"]
 [ext_resource type="Script" uid="uid://oskfgolfvi7b" path="res://Scenes/gui_controller.gd" id="17_psl12"]
 [ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="18_2ebs2"]
 [ext_resource type="Script" uid="uid://drt8cmoipvyhj" path="res://Scenes/inventory_slot.gd" id="18_oyb3p"]
@@ -33,53 +20,22 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvnna"]
+bg_color = Color(0.0196078, 0.0392157, 0.14902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
 [node name="MainScene" type="Node2D"]
 
-[node name="RoomManager" type="Node2D" parent="." node_paths=PackedStringArray("current_room")]
-script = ExtResource("1_jv6wh")
-current_room = NodePath("room_c_lab0")
-
-[node name="room_b_hall0" parent="RoomManager" instance=ExtResource("6_maf8m")]
-position = Vector2(3968, 0)
-
-[node name="room_b_hall1" parent="RoomManager" instance=ExtResource("7_huasi")]
-position = Vector2(5952, 0)
-
-[node name="room_b_mng" parent="RoomManager" instance=ExtResource("8_m1efj")]
-position = Vector2(1984, 0)
-
-[node name="room_b_arm" parent="RoomManager" instance=ExtResource("6_huasi")]
-position = Vector2(3968, 1152)
-
-[node name="room_c_hall1" parent="RoomManager" instance=ExtResource("7_m1efj")]
-position = Vector2(7936, 2304)
-
-[node name="room_c_hall0" parent="RoomManager" instance=ExtResource("8_mai8y")]
-position = Vector2(5952, 2304)
-
-[node name="room_c_closet" parent="RoomManager" instance=ExtResource("8_76v2p")]
-position = Vector2(7936, 1152)
-
-[node name="room_c_lab0" parent="RoomManager" instance=ExtResource("9_drdnd")]
-position = Vector2(3968, 2304)
-
-[node name="room_c_lab1" parent="RoomManager" instance=ExtResource("10_ioaeq")]
-position = Vector2(1984, 2304)
-
-[node name="room_d_death" parent="RoomManager" instance=ExtResource("11_drdnd")]
-room_z_offset = 2160
-
-[node name="room_d_hall0" parent="RoomManager" instance=ExtResource("12_gnsmo")]
-position = Vector2(1984, 3456)
-
-[node name="room_d_corner" parent="RoomManager" instance=ExtResource("13_psl12")]
-position = Vector2(0, 3456)
-
-[node name="room_d_boiler" parent="RoomManager" instance=ExtResource("14_2ebs2")]
-position = Vector2(3968, 3456)
+[node name="RoomManager" parent="." instance=ExtResource("1_maf8m")]
 
 [node name="player_character" parent="." instance=ExtResource("2_jv6wh")]
 position = Vector2(4720, 3096)
+starting_position = Vector2(4720, 3096)
 
 [node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -333,6 +289,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SlotBig" type="PanelContainer" parent="GUI/GUIController"]
+layout_mode = 0
 offset_left = 1600.0
 offset_top = 1024.0
 offset_right = 1856.0
@@ -377,6 +334,24 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TimerControl" type="PanelContainer" parent="GUI/GUIController"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 24.0
+offset_right = 160.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jvnna")
+
+[node name="TimeLabel" type="Label" parent="GUI/GUIController/TimerControl"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "1:00:00"
+horizontal_alignment = 1
+
 [connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_gui_input"]
 [connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_mouse_entered"]
 [connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_mouse_exited"]
@@ -398,3 +373,5 @@ vertical_alignment = 1
 [connection signal="gui_input" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_gui_input"]
 [connection signal="mouse_entered" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_mouse_entered"]
 [connection signal="mouse_exited" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_mouse_exited"]
+
+[editable path="RoomManager"]

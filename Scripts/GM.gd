@@ -9,6 +9,9 @@ class_name GM
 
 var GlobalFlags: Array[bool] 
 @onready var TotalFlags: int = Flag.size()
+var time_elapsed: float
+var time_enabled: bool = true
+const time_max: float = 9.9
 
 enum Flag {
 	Empty,
@@ -22,6 +25,37 @@ enum Flag {
 func _ready():
 	
 	reset_flags()
+	time_elapsed = 0
+	
+	
+func _process(delta):
+	if time_enabled:
+		time_elapsed += delta
+		gui_control.timer_update(time_elapsed)
+		if time_elapsed >= time_max:
+			loop_finish()
+			
+			
+##Cleanup for loop		
+func loop_finish():
+	print("Time's up!")
+	time_enabled = false
+	gui_control.timer_finish()
+	
+	player.global_position = player.starting_position
+	
+	room_manager.queue_free()
+	var mng = preload("res://Scenes/room_manager.tscn")
+	room_manager = mng.instantiate()
+	get_tree().current_scene.add_child(room_manager)
+	gui_control.reset_inventory()
+	camera.reset()
+	
+	
+	reset_flags()
+	time_elapsed = 0
+	time_enabled = true
+	
 	
 	
 	
