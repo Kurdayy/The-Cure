@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://hdfv4uqe4353"]
+[gd_scene load_steps=8 format=3 uid="uid://hdfv4uqe4353"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_qyikc"]
 [ext_resource type="Texture2D" uid="uid://bs8umcl1h2337" path="res://Backgrounds/bg_b_hall0.png" id="2_p15v1"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_6iyp8"]
 [ext_resource type="PackedScene" uid="uid://co0qn64mooqb6" path="res://Scenes/Prefabs/obj_elevator.tscn" id="4_nu55q"]
+[ext_resource type="Texture2D" uid="uid://ro4jnshejpx" path="res://Sprites/Items/Tuesdays_Poster.png" id="5_35xoi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_oq0nc"]
 vertices = PackedVector2Array(1130, 877.922, 98, 885.922, 98, 806, 670, 626, 1450, 626, 1450, 602, 1526, 602, 1526, 626, 1910, 626, 1910, 878, 1198, 878, 1198, 910, 1130, 910, 10, 806, 10, 698, 98, 698, 602, 626, 98, 626, 670, 602, 602, 602)
@@ -70,6 +71,10 @@ polygon = PackedVector2Array(0, 680, 48, 680, 48, 608, 568, 608, 568, 576, 704, 
 position = Vector2(1488, 584)
 room_to = "room_c_hall0"
 transition_id = 2
+
+[node name="TuesdaysPoster" type="Sprite2D" parent="."]
+position = Vector2(1008, 424)
+texture = ExtResource("5_35xoi")
 
 [editable path="transitions/t0"]
 [editable path="transitions/t2"]

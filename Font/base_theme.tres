@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bkg1c32yso3ui"]
+
+[ext_resource type="FontFile" uid="uid://b3vvuri4b361j" path="res://Font/Pixellari.ttf" id="1_arvrh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arvrh"]
+bg_color = Color(0.0196078, 0.0392157, 0.14902, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+default_font = ExtResource("1_arvrh")
+/fonts/font = ExtResource("1_arvrh")
+Label/fonts/font = ExtResource("1_arvrh")
+Panel/styles/panel = SubResource("StyleBoxFlat_arvrh")

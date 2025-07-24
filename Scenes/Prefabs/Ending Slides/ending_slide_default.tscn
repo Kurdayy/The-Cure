@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctp3nx7vucdg6"]
+
+[ext_resource type="Script" uid="uid://h556utajkbr5" path="res://Scenes/ending_slide_default.gd" id="1_ij27s"]
+[ext_resource type="FontFile" uid="uid://b3vvuri4b361j" path="res://Font/Pixellari.ttf" id="2_yh37i"]
+
+[node name="EndingSlide_Default" type="ColorRect"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_ij27s")
+
+[node name="EndingText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -533.0
+offset_top = -68.0
+offset_right = 533.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_yh37i")
+theme_override_font_sizes/font_size = 24
+text = "As the clock reaches 12pm Western Time, the emergency shutters close, sealing the researchers of
+Westfield Biotics inside the facility.
+Not to worry, for they are shortly embraced and will never be alone again..."
+horizontal_alignment = 1
+
+[node name="B_Menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = 124.0
+offset_right = -128.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_yh37i")
+theme_override_font_sizes/font_size = 18
+text = "Return to menu"
+
+[node name="B_Reset" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = 124.0
+offset_right = 320.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_yh37i")
+theme_override_font_sizes/font_size = 18
+text = "Try again"
+
+[connection signal="pressed" from="B_Menu" to="." method="_on_b_menu_pressed"]
+[connection signal="pressed" from="B_Reset" to="." method="_on_b_reset_pressed"]

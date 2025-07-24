@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg7vlv6wglreh"
-path="res://.godot/imported/the_hand_that_feeds.png-3b5f674d82979f6c8df1de53346e9dc6.ctex"
+uid="uid://ci1a6lliaq6iv"
+path="res://.godot/imported/radio.png-f48db759e23c4f392a38d1b85555e560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/the_hand_that_feeds.png"
-dest_files=["res://.godot/imported/the_hand_that_feeds.png-3b5f674d82979f6c8df1de53346e9dc6.ctex"]
+source_file="res://Sprites/Items/radio.png"
+dest_files=["res://.godot/imported/radio.png-f48db759e23c4f392a38d1b85555e560.ctex"]
 
 [params]
 

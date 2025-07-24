@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://qhv33tvi5xmr"]
 
-[ext_resource type="Texture2D" uid="uid://dp6rxs1bdovuv" path="res://Sprites/tie.png" id="1_vehuu"]
+[ext_resource type="Texture2D" uid="uid://dp6rxs1bdovuv" path="res://Sprites/Items/tie.png" id="1_vehuu"]
 [ext_resource type="Script" uid="uid://c26qx1awlaiue" path="res://Items/item_class.gd" id="1_xi1gl"]
 
 [resource]

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://45wew2lx7dli" path="res://Backgrounds/bg_c_lab0.png" id="2_nwivt"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_hh6yy"]
 [ext_resource type="Shader" uid="uid://cu3xo10udf3ar" path="res://Scripts/shaders/outline.gdshader" id="4_oihfl"]
-[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="4_r6uqu"]
+[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/Items/fuel.png" id="4_r6uqu"]
 [ext_resource type="Script" uid="uid://c7hifkcvol4i7" path="res://Scenes/Rooms/room_c/obj_fuel.gd" id="5_oihfl"]
 [ext_resource type="Script" uid="uid://catm0l87jbjc4" path="res://Scenes/Rooms/room_c/obj_necktie.gd" id="7_6wnjr"]
-[ext_resource type="Texture2D" uid="uid://dp6rxs1bdovuv" path="res://Sprites/tie.png" id="7_lw78p"]
+[ext_resource type="Texture2D" uid="uid://dp6rxs1bdovuv" path="res://Sprites/Items/tie.png" id="7_lw78p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
 

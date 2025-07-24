@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt2xjyc60juv1"]
+
+[ext_resource type="FontFile" uid="uid://b3vvuri4b361j" path="res://Font/Pixellari.ttf" id="1_gv6xd"]
+[ext_resource type="Script" uid="uid://chy7s5tdi5472" path="res://Scripts/main_menu.gd" id="1_ws7n8"]
+[ext_resource type="Theme" uid="uid://bkg1c32yso3ui" path="res://Font/base_theme.tres" id="2_ws7n8"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_ws7n8")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 192.0
+offset_right = 800.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("1_gv6xd")
+theme_override_font_sizes/font_size = 128
+text = "Embrace"
+
+[node name="subtitle" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 128.0
+offset_right = 400.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("1_gv6xd")
+theme_override_font_sizes/font_size = 32
+text = "ver 0.01"
+
+[node name="Button Group" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 448.0
+offset_right = 576.0
+offset_bottom = 768.0
+
+[node name="B_Start" type="Button" parent="Button Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.8
+anchor_bottom = 3.6
+offset_right = -972.8
+offset_bottom = -1096.0
+theme = ExtResource("2_ws7n8")
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="B_Options" type="Button" parent="Button Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.8
+anchor_bottom = 3.6
+offset_top = 72.0
+offset_right = -972.8
+offset_bottom = -1024.0
+theme = ExtResource("2_ws7n8")
+theme_override_font_sizes/font_size = 24
+text = "Options
+"
+
+[node name="B_Quit" type="Button" parent="Button Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.8
+anchor_bottom = 3.6
+offset_top = 216.0
+offset_right = -972.8
+offset_bottom = -880.0
+theme = ExtResource("2_ws7n8")
+theme_override_font_sizes/font_size = 24
+text = "Exit Game"
+
+[node name="B_Credits" type="Button" parent="Button Group"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.8
+anchor_bottom = 3.6
+offset_top = 144.0
+offset_right = -972.8
+offset_bottom = -952.0
+theme = ExtResource("2_ws7n8")
+theme_override_font_sizes/font_size = 24
+text = "Credits
+"
+
+[node name="Accreditation" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 1008.0
+offset_right = 576.0
+offset_bottom = 1040.0
+theme_override_fonts/font = ExtResource("1_gv6xd")
+theme_override_font_sizes/font_size = 16
+text = "A game by team Kurdii, Seacowknowhow, Andfishes and Grometty"
+
+[connection signal="pressed" from="Button Group/B_Start" to="." method="_on_b_start_pressed"]
+[connection signal="pressed" from="Button Group/B_Options" to="." method="_on_b_options_pressed"]
+[connection signal="pressed" from="Button Group/B_Quit" to="." method="_on_b_quit_pressed"]
+[connection signal="pressed" from="Button Group/B_Credits" to="." method="_on_b_credits_pressed"]

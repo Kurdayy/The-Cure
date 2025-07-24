@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b0c7yuwo87skw"]
 
-[ext_resource type="Texture2D" uid="uid://bg7vlv6wglreh" path="res://Sprites/the_hand_that_feeds.png" id="1_0qyo1"]
+[ext_resource type="Texture2D" uid="uid://bg7vlv6wglreh" path="res://Sprites/Items/the_hand_that_feeds.png" id="1_0qyo1"]
 [ext_resource type="Script" uid="uid://c26qx1awlaiue" path="res://Items/item_class.gd" id="2_84mux"]
 
 [resource]

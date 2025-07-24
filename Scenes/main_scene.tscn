@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://blwp2648a4fwc"]
+[gd_scene load_steps=13 format=3 uid="uid://blwp2648a4fwc"]
 
 [ext_resource type="PackedScene" uid="uid://c1kaqte6jcl66" path="res://Scenes/room_manager.tscn" id="1_maf8m"]
 [ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/Prefabs/player_character.tscn" id="2_jv6wh"]
+[ext_resource type="FontFile" uid="uid://b3vvuri4b361j" path="res://Font/Pixellari.ttf" id="8_huasi"]
+[ext_resource type="PackedScene" uid="uid://ctp3nx7vucdg6" path="res://Scenes/Prefabs/Ending Slides/ending_slide_default.tscn" id="8_m1efj"]
+[ext_resource type="PackedScene" uid="uid://dt2xjyc60juv1" path="res://Scenes/Prefabs/main_menu.tscn" id="8_mai8y"]
 [ext_resource type="Script" uid="uid://c1rbfreb0e7e7" path="res://Scripts/main_camera.gd" id="13_ioaeq"]
 [ext_resource type="Script" uid="uid://oskfgolfvi7b" path="res://Scenes/gui_controller.gd" id="17_psl12"]
-[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="18_2ebs2"]
+[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/Items/fuel.png" id="18_2ebs2"]
 [ext_resource type="Script" uid="uid://drt8cmoipvyhj" path="res://Scenes/inventory_slot.gd" id="18_oyb3p"]
-[ext_resource type="Texture2D" uid="uid://bg7vlv6wglreh" path="res://Sprites/the_hand_that_feeds.png" id="20_jvnna"]
+[ext_resource type="Texture2D" uid="uid://bg7vlv6wglreh" path="res://Sprites/Items/the_hand_that_feeds.png" id="20_jvnna"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyb3p"]
 bg_color = Color(0.0192187, 0.0386437, 0.148251, 1)
@@ -351,6 +354,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "1:00:00"
 horizontal_alignment = 1
+
+[node name="MainMenu" parent="GUI/GUIController" instance=ExtResource("8_mai8y")]
+
+[node name="EndingSlide_Default" parent="GUI" instance=ExtResource("8_m1efj")]
+visible = false
+
+[node name="Alpha Notice" type="Label" parent="GUI"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 344.0
+offset_bottom = 144.0
+theme_override_fonts/font = ExtResource("8_huasi")
+theme_override_font_sizes/font_size = 24
+text = "Pre Alpha 0"
 
 [connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_gui_input"]
 [connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_mouse_entered"]

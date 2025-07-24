@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://4xwtd302tymt"]
 
-[ext_resource type="Texture2D" uid="uid://ci1a6lliaq6iv" path="res://Sprites/radio.png" id="1_6n16u"]
+[ext_resource type="Texture2D" uid="uid://ci1a6lliaq6iv" path="res://Sprites/Items/radio.png" id="1_6n16u"]
 [ext_resource type="Script" uid="uid://cmvdvrjatr6l8" path="res://Scenes/Rooms/room_b/obj_radio.gd" id="2_aqra8"]
 [ext_resource type="AudioStream" uid="uid://bcbfo3vd2bldu" path="res://Audio/Items/CreepyNumbersBroadcast.ogg" id="3_aqra8"]
 

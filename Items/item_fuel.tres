@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cpdyvgmilkdv1"]
 
-[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/fuel.png" id="1_48a1t"]
+[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/Items/fuel.png" id="1_48a1t"]
 [ext_resource type="Script" uid="uid://c26qx1awlaiue" path="res://Items/item_class.gd" id="2_xoes1"]
 
 [resource]

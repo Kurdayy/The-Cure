@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyualq5pd8p3m"]
+
+[ext_resource type="Script" uid="uid://dr1t13motahsr" path="res://Scenes/basic_transition.gd" id="1_oqnlp"]
+
+[node name="FadeTransition" type="ColorRect"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_oqnlp")

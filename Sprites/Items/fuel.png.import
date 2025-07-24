@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp6rxs1bdovuv"
-path="res://.godot/imported/tie.png-af10bfa16aaaf951d7570970b38e1996.ctex"
+uid="uid://bqf32lunaavvk"
+path="res://.godot/imported/fuel.png-75aaab65c3d6bf5179a769c895dedc91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tie.png"
-dest_files=["res://.godot/imported/tie.png-af10bfa16aaaf951d7570970b38e1996.ctex"]
+source_file="res://Sprites/Items/fuel.png"
+dest_files=["res://.godot/imported/fuel.png-75aaab65c3d6bf5179a769c895dedc91.ctex"]
 
 [params]
 
