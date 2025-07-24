@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://blwp2648a4fwc"]
+[gd_scene load_steps=12 format=3 uid="uid://blwp2648a4fwc"]
 
 [ext_resource type="PackedScene" uid="uid://c1kaqte6jcl66" path="res://Scenes/room_manager.tscn" id="1_maf8m"]
 [ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/Prefabs/player_character.tscn" id="2_jv6wh"]
 [ext_resource type="FontFile" uid="uid://b3vvuri4b361j" path="res://Font/Pixellari.ttf" id="8_huasi"]
-[ext_resource type="PackedScene" uid="uid://ctp3nx7vucdg6" path="res://Scenes/Prefabs/Ending Slides/ending_slide_default.tscn" id="8_m1efj"]
 [ext_resource type="PackedScene" uid="uid://dt2xjyc60juv1" path="res://Scenes/Prefabs/main_menu.tscn" id="8_mai8y"]
 [ext_resource type="Script" uid="uid://c1rbfreb0e7e7" path="res://Scripts/main_camera.gd" id="13_ioaeq"]
 [ext_resource type="Script" uid="uid://oskfgolfvi7b" path="res://Scenes/gui_controller.gd" id="17_psl12"]
@@ -55,7 +54,15 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("17_psl12")
 
-[node name="InventoryControl" type="HBoxContainer" parent="GUI/GUIController"]
+[node name="MainMenu" parent="GUI/GUIController" instance=ExtResource("8_mai8y")]
+visible = false
+
+[node name="InGameGUI" type="Control" parent="GUI/GUIController"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InventoryControl" type="HBoxContainer" parent="GUI/GUIController/InGameGUI"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 1024.0
@@ -63,16 +70,16 @@ offset_right = 1856.0
 offset_bottom = 1216.0
 theme_override_constants/separation = 10
 
-[node name="Slot0" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+[node name="Slot0" type="PanelContainer" parent="GUI/GUIController/InGameGUI/InventoryControl"]
 layout_mode = 2
 script = ExtResource("18_oyb3p")
 
-[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot0"]
+[node name="Panel" type="Panel" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot0"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
 
-[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot0/Panel"]
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot0/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,7 +95,7 @@ grow_vertical = 2
 texture = ExtResource("18_2ebs2")
 expand_mode = 2
 
-[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot0/Panel"]
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot0/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -101,16 +108,16 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slot1" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+[node name="Slot1" type="PanelContainer" parent="GUI/GUIController/InGameGUI/InventoryControl"]
 layout_mode = 2
 script = ExtResource("18_oyb3p")
 
-[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot1"]
+[node name="Panel" type="Panel" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot1"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
 
-[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot1/Panel"]
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot1/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -126,7 +133,7 @@ grow_vertical = 2
 texture = ExtResource("18_2ebs2")
 expand_mode = 2
 
-[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot1/Panel"]
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot1/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -139,16 +146,16 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slot2" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+[node name="Slot2" type="PanelContainer" parent="GUI/GUIController/InGameGUI/InventoryControl"]
 layout_mode = 2
 script = ExtResource("18_oyb3p")
 
-[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot2"]
+[node name="Panel" type="Panel" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot2"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
 
-[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot2/Panel"]
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot2/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,7 +171,7 @@ grow_vertical = 2
 texture = ExtResource("18_2ebs2")
 expand_mode = 2
 
-[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot2/Panel"]
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot2/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -177,16 +184,16 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slot3" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+[node name="Slot3" type="PanelContainer" parent="GUI/GUIController/InGameGUI/InventoryControl"]
 layout_mode = 2
 script = ExtResource("18_oyb3p")
 
-[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot3"]
+[node name="Panel" type="Panel" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot3"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
 
-[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot3/Panel"]
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot3/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -202,7 +209,7 @@ grow_vertical = 2
 texture = ExtResource("18_2ebs2")
 expand_mode = 2
 
-[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot3/Panel"]
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot3/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -215,16 +222,16 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slot4" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+[node name="Slot4" type="PanelContainer" parent="GUI/GUIController/InGameGUI/InventoryControl"]
 layout_mode = 2
 script = ExtResource("18_oyb3p")
 
-[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot4"]
+[node name="Panel" type="Panel" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot4"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
 
-[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot4/Panel"]
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot4/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -240,7 +247,7 @@ grow_vertical = 2
 texture = ExtResource("18_2ebs2")
 expand_mode = 2
 
-[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot4/Panel"]
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot4/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -253,16 +260,16 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slot5" type="PanelContainer" parent="GUI/GUIController/InventoryControl"]
+[node name="Slot5" type="PanelContainer" parent="GUI/GUIController/InGameGUI/InventoryControl"]
 layout_mode = 2
 script = ExtResource("18_oyb3p")
 
-[node name="Panel" type="Panel" parent="GUI/GUIController/InventoryControl/Slot5"]
+[node name="Panel" type="Panel" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot5"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
 
-[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InventoryControl/Slot5/Panel"]
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot5/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -278,7 +285,7 @@ grow_vertical = 2
 texture = ExtResource("18_2ebs2")
 expand_mode = 2
 
-[node name="ItemLabel" type="Label" parent="GUI/GUIController/InventoryControl/Slot5/Panel"]
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InGameGUI/InventoryControl/Slot5/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -291,7 +298,7 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlotBig" type="PanelContainer" parent="GUI/GUIController"]
+[node name="SlotBig" type="PanelContainer" parent="GUI/GUIController/InGameGUI"]
 layout_mode = 0
 offset_left = 1600.0
 offset_top = 1024.0
@@ -302,12 +309,12 @@ item_name = "Empty"
 empty = false
 texture = ExtResource("20_jvnna")
 
-[node name="Panel" type="Panel" parent="GUI/GUIController/SlotBig"]
+[node name="Panel" type="Panel" parent="GUI/GUIController/InGameGUI/SlotBig"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oyb3p")
 
-[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/SlotBig/Panel"]
+[node name="ItemTexture" type="TextureRect" parent="GUI/GUIController/InGameGUI/SlotBig/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -324,7 +331,7 @@ texture = ExtResource("20_jvnna")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="ItemLabel" type="Label" parent="GUI/GUIController/SlotBig/Panel"]
+[node name="ItemLabel" type="Label" parent="GUI/GUIController/InGameGUI/SlotBig/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -337,28 +344,23 @@ text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimerControl" type="PanelContainer" parent="GUI/GUIController"]
+[node name="TimerControl" type="PanelContainer" parent="GUI/GUIController/InGameGUI"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -160.0
+offset_left = 780.0
 offset_top = 24.0
-offset_right = 160.0
+offset_right = 1100.0
 offset_bottom = 88.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jvnna")
 
-[node name="TimeLabel" type="Label" parent="GUI/GUIController/TimerControl"]
+[node name="TimeLabel" type="Label" parent="GUI/GUIController/InGameGUI/TimerControl"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "1:00:00"
 horizontal_alignment = 1
-
-[node name="MainMenu" parent="GUI/GUIController" instance=ExtResource("8_mai8y")]
-
-[node name="EndingSlide_Default" parent="GUI" instance=ExtResource("8_m1efj")]
-visible = false
 
 [node name="Alpha Notice" type="Label" parent="GUI"]
 offset_left = 8.0
@@ -369,26 +371,26 @@ theme_override_fonts/font = ExtResource("8_huasi")
 theme_override_font_sizes/font_size = 24
 text = "Pre Alpha 0"
 
-[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_gui_input"]
-[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot0/Panel" to="GUI/GUIController/InventoryControl/Slot0" method="_on_panel_mouse_exited"]
-[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot1/Panel" to="GUI/GUIController/InventoryControl/Slot1" method="_on_panel_gui_input"]
-[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot1/Panel" to="GUI/GUIController/InventoryControl/Slot1" method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot1/Panel" to="GUI/GUIController/InventoryControl/Slot1" method="_on_panel_mouse_exited"]
-[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot2/Panel" to="GUI/GUIController/InventoryControl/Slot2" method="_on_panel_gui_input"]
-[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot2/Panel" to="GUI/GUIController/InventoryControl/Slot2" method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot2/Panel" to="GUI/GUIController/InventoryControl/Slot2" method="_on_panel_mouse_exited"]
-[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot3/Panel" to="GUI/GUIController/InventoryControl/Slot3" method="_on_panel_gui_input"]
-[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot3/Panel" to="GUI/GUIController/InventoryControl/Slot3" method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot3/Panel" to="GUI/GUIController/InventoryControl/Slot3" method="_on_panel_mouse_exited"]
-[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot4/Panel" to="GUI/GUIController/InventoryControl/Slot4" method="_on_panel_gui_input"]
-[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot4/Panel" to="GUI/GUIController/InventoryControl/Slot4" method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot4/Panel" to="GUI/GUIController/InventoryControl/Slot4" method="_on_panel_mouse_exited"]
-[connection signal="gui_input" from="GUI/GUIController/InventoryControl/Slot5/Panel" to="GUI/GUIController/InventoryControl/Slot5" method="_on_panel_gui_input"]
-[connection signal="mouse_entered" from="GUI/GUIController/InventoryControl/Slot5/Panel" to="GUI/GUIController/InventoryControl/Slot5" method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/GUIController/InventoryControl/Slot5/Panel" to="GUI/GUIController/InventoryControl/Slot5" method="_on_panel_mouse_exited"]
-[connection signal="gui_input" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_gui_input"]
-[connection signal="mouse_entered" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="GUI/GUIController/SlotBig/Panel" to="GUI/GUIController/SlotBig" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InGameGUI/InventoryControl/Slot0/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot0" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InGameGUI/InventoryControl/Slot0/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot0" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InGameGUI/InventoryControl/Slot0/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot0" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InGameGUI/InventoryControl/Slot1/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot1" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InGameGUI/InventoryControl/Slot1/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot1" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InGameGUI/InventoryControl/Slot1/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot1" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InGameGUI/InventoryControl/Slot2/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot2" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InGameGUI/InventoryControl/Slot2/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot2" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InGameGUI/InventoryControl/Slot2/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot2" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InGameGUI/InventoryControl/Slot3/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot3" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InGameGUI/InventoryControl/Slot3/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot3" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InGameGUI/InventoryControl/Slot3/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot3" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InGameGUI/InventoryControl/Slot4/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot4" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InGameGUI/InventoryControl/Slot4/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot4" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InGameGUI/InventoryControl/Slot4/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot4" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InGameGUI/InventoryControl/Slot5/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot5" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InGameGUI/InventoryControl/Slot5/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot5" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InGameGUI/InventoryControl/Slot5/Panel" to="GUI/GUIController/InGameGUI/InventoryControl/Slot5" method="_on_panel_mouse_exited"]
+[connection signal="gui_input" from="GUI/GUIController/InGameGUI/SlotBig/Panel" to="GUI/GUIController/InGameGUI/SlotBig" method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="GUI/GUIController/InGameGUI/SlotBig/Panel" to="GUI/GUIController/InGameGUI/SlotBig" method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/GUIController/InGameGUI/SlotBig/Panel" to="GUI/GUIController/InGameGUI/SlotBig" method="_on_panel_mouse_exited"]
 
 [editable path="RoomManager"]

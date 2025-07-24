@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://co0qn64mooqb6"]
 
 [ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/Items/fuel.png" id="1_8x5lg"]
-[ext_resource type="Script" uid="uid://ctkckvjbca3vs" path="res://Scenes/Rooms/room_c/obj_elevator.gd" id="2_5pf5p"]
+[ext_resource type="Script" uid="uid://ctkckvjbca3vs" path="res://Scripts/Objects/obj_elevator.gd" id="2_5pf5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wnjr"]
 size = Vector2(80, 34.4615)

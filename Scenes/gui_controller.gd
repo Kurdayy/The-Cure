@@ -16,8 +16,10 @@ var time_elapsed: float = 0
 var fade_in: bool = true
 var transition_object
 @onready var transition_prefab = preload("res://Scenes/Prefabs/elevator_transition.tscn")
-@onready var TimerControl = $TimerControl
-@onready var TimerLabel = $TimerControl/TimeLabel
+@onready var TimerControl: Control = $InGameGUI/TimerControl
+@onready var TimerLabel: Label = $InGameGUI/TimerControl/TimeLabel
+@onready var InGameGUI: Control = $InGameGUI
+var PauseMenu: Control
 var tmax = 60000 # 60 seconds
 
 
@@ -32,14 +34,16 @@ func elevator_transition(transition_callback: Callable, finish_callback: Callabl
 
 func _ready():
 	
+	
+	InGameGUI.hide()
 	#Big inventory slot setup
-	inventory_big_slot = $SlotBig
+	inventory_big_slot = $InGameGUI/SlotBig
 	inventory_empty_hand = preload("res://Items/item_hand_empty.tres")
 	inventory_big = inventory_empty_hand
 	inventory_big_slot.import_item(inventory_big)
 	
 	#Inventory setup for slots
-	inventory_control = $InventoryControl
+	inventory_control = $InGameGUI/InventoryControl
 	
 	var idx = 0
 	for c in inventory_control.get_children(false):
@@ -49,7 +53,6 @@ func _ready():
 			idx += 1
 				
 	inventory.append(preload("res://Items/item_tie.tres"))
-	
 	update_inventory_gui()
 	
 
@@ -59,6 +62,7 @@ func reset_inventory():
 	inventory_gui_slots.clear()
 	inventory_big_slot = null
 	_ready()
+
 	
 	
 #update timer based on time in ms

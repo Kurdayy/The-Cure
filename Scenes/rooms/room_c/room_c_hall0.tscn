@@ -1,11 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj6cmk8i1h2lw"]
+[gd_scene load_steps=9 format=3 uid="uid://bj6cmk8i1h2lw"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_s0w54"]
 [ext_resource type="Texture2D" uid="uid://dlrq6urofnf7" path="res://Backgrounds/bg_c_hall0.png" id="2_s0w54"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_vh7lv"]
 [ext_resource type="PackedScene" uid="uid://co0qn64mooqb6" path="res://Scenes/Prefabs/obj_elevator.tscn" id="4_vpal8"]
+[ext_resource type="Script" uid="uid://b3regxq1wnr18" path="res://Scenes/Rooms/room_c/obj_stair_entrance.gd" id="5_ih4y5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpal8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_color = Color(0.379639, 0.835777, 0.960679, 1)
+border_blend = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih4y5"]
+size = Vector2(128, 61.8205)
 
 [node name="room_c_hall0" type="Node2D"]
 script = ExtResource("1_s0w54")
@@ -43,6 +55,7 @@ point_to_id = 1
 locked = true
 
 [node name="room_collision" type="StaticBody2D" parent="."]
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_p15v1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
@@ -57,5 +70,23 @@ transition_id = 1
 position = Vector2(1271, 687)
 room_to = "room_d_hall0"
 transition_id = 1
+
+[node name="obj_stair_entrance" type="Node2D" parent="."]
+position = Vector2(635, 475)
+script = ExtResource("5_ih4y5")
+
+[node name="Outline" type="Panel" parent="obj_stair_entrance"]
+offset_left = 5.0
+offset_right = 133.0
+offset_bottom = 220.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vpal8")
+
+[node name="obj_col" type="Area2D" parent="obj_stair_entrance"]
+position = Vector2(68, 219)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_stair_entrance/obj_col"]
+position = Vector2(1, -30.0898)
+shape = SubResource("RectangleShape2D_ih4y5")
 
 [editable path="transitions/t0"]

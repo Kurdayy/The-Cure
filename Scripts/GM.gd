@@ -9,14 +9,17 @@ class_name GM
 var gui_control: GUI_Controller
 var player: CharacterBody2D
 @onready var main_menu = preload("res://Scenes/Prefabs/main_menu.tscn")
+@onready var pause_menu = preload("res://Scenes/Prefabs/pause_menu.tscn")
 
-@onready var ending_slide_default = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_default.tscn")
+#@onready var ending_slide_default = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_default.tscn")
 var current_ending: Ending = Ending.DEFAULT
 
 var GlobalFlags: Array[bool] 
 @onready var TotalFlags: int = Flag.size()
 var time_elapsed: float
 var time_enabled: bool = true
+var game_paused: bool = false
+var game_active: bool = false
 const time_max: float = 9.9
 
 const SHOW_MAIN_MENU_ON_STARTUP: bool = false
@@ -31,7 +34,8 @@ enum Flag {
 
 enum Ending {
 	DEFAULT,
-	CURE
+	CURE,
+	STAIRS
 }
 
 func _ready():
@@ -54,6 +58,8 @@ func spawn_main_menu():
 	if !menu:
 		menu = main_menu.instantiate()
 		gui_control.add_child(menu)
+	gui_control.InGameGUI.hide()
+	game_active = false
 		
 		
 
@@ -72,8 +78,12 @@ func start_game():
 	reset_flags()
 	player.input_enabled = true
 	player.global_position = player.starting_position
+	gui_control.InGameGUI.show()
 	time_elapsed = 0
 	time_enabled = true
+	game_active = true
+	game_paused = false
+	current_ending = Ending.DEFAULT
 	
 	
 func _process(delta):
@@ -82,6 +92,25 @@ func _process(delta):
 		gui_control.timer_update(time_elapsed)
 		if time_elapsed >= time_max:
 			loop_finish()
+
+## Pause game and player control, then spawn pause menu gui element	
+func pause():
+	time_enabled = false
+	player.input_enabled = false
+	game_paused = true
+	var pm = pause_menu.instantiate()
+	gui_control.add_child(pm)
+	gui_control.PauseMenu = pm
+	gui_control.InGameGUI.hide()
+	
+	
+## Resume game and player control
+func unpause():
+	time_enabled = true
+	player.input_enabled = true
+	game_paused = false
+	gui_control.PauseMenu.queue_free()
+	gui_control.InGameGUI.show()
 			
 			
 ##Cleanup for loop		
@@ -90,21 +119,26 @@ func loop_finish():
 	time_enabled = false
 	gui_control.timer_finish()
 	player.input_enabled = false
-	
+	var slide
 	match(current_ending):
 		Ending.DEFAULT:
-			var ending_slide = ending_slide_default.instantiate()
-			gui_control.add_child(ending_slide)
+			slide = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_default.tscn")
+		Ending.STAIRS:
+			slide = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_staircase.tscn")
+		_: # default case
+			spawn_main_menu()
+			return
+			#escapes and doesnt play a slide
+			
+			
+	var ending_slide = slide.instantiate()
+	gui_control.add_child(ending_slide)
 			
 			
 	
 	
 
 func reset():
-	room_manager.queue_free()
-	var mng = preload("res://Scenes/room_manager.tscn")
-	room_manager = mng.instantiate()
-	get_tree().current_scene.add_child(room_manager)
 	
 	start_game()
 	
@@ -129,5 +163,13 @@ func list_flags():
 	print("CURRENT GLOBAL FLAGS: ")
 	for f in range(0, TotalFlags):
 		print("		", Flag.keys()[f], " - ", GlobalFlags[f])
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("open_menu") && game_active:
+		if game_paused:
+			unpause()
+		elif !game_paused:
+			pause()
+		
 	
 	
