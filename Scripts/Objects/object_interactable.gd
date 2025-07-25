@@ -3,11 +3,22 @@ extends Node2D
 class_name Object_Interactable
 
 @export var interactable: bool = true
-@export var max_interact_dist: float = 200
+@export var flag_to_set: Global.Flag
+@export var bark_enabled: bool = false
+@export_group("Bark Properties")
+
+@export var bark_text: String = ""
+@export var bark_color: Color = Color(1, 1, 1, 1)
+@export var bark_duration: float = 0.5
+@export var bark_hover_duration: float = 2.5
+@export var bark_hover_offset: float = 10
+@export var bark_offset: Vector2 = Vector2(0, -64)
+
+@export_group("Outline Properties")
 @export var max_outline_thickness: float = 7
 @export var min_outline_thickness: float = 4
 @export var outline_color: Color = "ffff57"
-@export var flag_to_set: Global.Flag
+
 @onready var delta_outline_thickness: float = max_outline_thickness - min_outline_thickness
 @onready var SHADER: Shader = preload("res://Scripts/shaders/outline.gdshader")
 var outline_ticks: int = 2000
@@ -21,14 +32,22 @@ func _ready():
 	material.resource_local_to_scene = true
 	z_index = int(position.y)
 
-##Default interaction is to delete and set the attached flag
+
+##Default interaction is to flip flag and potentially spawn a bark
 func on_interact(player: CharacterBody2D):
-	print("Interact with item '", self, "'")
-	var diff: Vector2 = Global.player.global_position - global_position
-	if diff.length() <= max_interact_dist:
-		Global.set_flag(flag_to_set, true)
-		player.remove_interactable(self)
-		queue_free() #deletes node
+	Global.set_flag(flag_to_set, true)
+	if bark_enabled:
+		spawn_bark()
+		#bark_enabled = false
+		
+		
+func spawn_bark():
+	var b = preload("res://Scenes/Prefabs/context_bark.tscn")
+	var new_bark = b.instantiate()
+	new_bark.bark_setup(bark_text, bark_color, bark_duration, bark_hover_duration, bark_hover_offset)
+	
+	new_bark.position += bark_offset
+	self.add_child(new_bark)
 
 
 ##Default select behavior is to highlight

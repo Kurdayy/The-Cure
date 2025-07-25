@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://oihdd8cstyt2"]
 
-[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_kunyl"]
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/Core/room.gd" id="1_kunyl"]
 [ext_resource type="Texture2D" uid="uid://b164i522eb1hs" path="res://Backgrounds/bg_d_hall0.png" id="2_evm6s"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_phduy"]
 [ext_resource type="PackedScene" uid="uid://co0qn64mooqb6" path="res://Scenes/Prefabs/obj_elevator.tscn" id="4_vf6yx"]

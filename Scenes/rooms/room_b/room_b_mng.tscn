@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cthlmpw10bjwp"]
 
-[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_mf4d0"]
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/Core/room.gd" id="1_mf4d0"]
 [ext_resource type="Texture2D" uid="uid://c8y3j2nc4nbo7" path="res://Backgrounds/bg_b_mng.png" id="2_mf4d0"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_mf4d0"]
 [ext_resource type="PackedScene" uid="uid://4xwtd302tymt" path="res://Scenes/Items/obj_radio.tscn" id="4_73gpo"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bv8lg7bqhtjtl"]
+[gd_scene load_steps=16 format=3 uid="uid://bv8lg7bqhtjtl"]
 
-[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_nwivt"]
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/Core/room.gd" id="1_nwivt"]
 [ext_resource type="Texture2D" uid="uid://45wew2lx7dli" path="res://Backgrounds/bg_c_lab0.png" id="2_nwivt"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_hh6yy"]
 [ext_resource type="Shader" uid="uid://cu3xo10udf3ar" path="res://Scripts/shaders/outline.gdshader" id="4_oihfl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://catm0l87jbjc4" path="res://Scripts/Objects/obj_necktie.gd" id="7_6wnjr"]
 [ext_resource type="Texture2D" uid="uid://dp6rxs1bdovuv" path="res://Sprites/Items/tie.png" id="7_lw78p"]
 [ext_resource type="Script" uid="uid://b4e8577ch1v5p" path="res://Scripts/Objects/obj_to_scene.gd" id="9_ebkd2"]
+[ext_resource type="Script" uid="uid://dph1f8fanmquc" path="res://Scripts/Objects/object_interactable.gd" id="9_jb28e"]
 [ext_resource type="PackedScene" uid="uid://bft0sb0oold1v" path="res://Scenes/Interactables/int_fume_hood.tscn" id="10_ebkd2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
@@ -75,6 +76,22 @@ script = ExtResource("7_6wnjr")
 [node name="obj_col" type="Area2D" parent="obj_necktie"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_necktie/obj_col"]
+position = Vector2(0, -6.40002)
+shape = SubResource("RectangleShape2D_lw78p")
+
+[node name="obj_necktie3" type="Sprite2D" parent="."]
+position = Vector2(1080, 704)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("7_lw78p")
+offset = Vector2(0, -38.4)
+script = ExtResource("9_jb28e")
+bark_enabled = true
+bark_text = "Pretty snazzy looking tie"
+bark_offset = Vector2(0, -120)
+
+[node name="obj_col" type="Area2D" parent="obj_necktie3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obj_necktie3/obj_col"]
 position = Vector2(0, -6.40002)
 shape = SubResource("RectangleShape2D_lw78p")
 

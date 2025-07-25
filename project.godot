@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
-Global="*res://Scripts/GM.gd"
+Global="*res://Scripts/Core/GM.gd"
 
 [display]
 

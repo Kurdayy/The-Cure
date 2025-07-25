@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2x2hss4usgk0"]
 
-[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_vek82"]
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/Core/room.gd" id="1_vek82"]
 [ext_resource type="Texture2D" uid="uid://brmbajnxxqfq" path="res://Backgrounds/bg_d_boiler.png" id="2_vek82"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_mf466"]
 [ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/Items/fuel.png" id="4_un252"]

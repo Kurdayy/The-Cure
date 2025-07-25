@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://blwp2648a4fwc"]
+[gd_scene load_steps=13 format=3 uid="uid://blwp2648a4fwc"]
 
 [ext_resource type="PackedScene" uid="uid://c1kaqte6jcl66" path="res://Scenes/room_manager.tscn" id="1_maf8m"]
 [ext_resource type="PackedScene" uid="uid://cqvo88tdxlx2e" path="res://Scenes/Prefabs/player_character.tscn" id="2_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://dmtui65jeb7au" path="res://Scenes/Prefabs/context_bark.tscn" id="3_mai8y"]
 [ext_resource type="FontFile" uid="uid://b3vvuri4b361j" path="res://Font/Pixellari.ttf" id="8_huasi"]
 [ext_resource type="PackedScene" uid="uid://dt2xjyc60juv1" path="res://Scenes/Prefabs/main_menu.tscn" id="8_mai8y"]
-[ext_resource type="Script" uid="uid://c1rbfreb0e7e7" path="res://Scripts/main_camera.gd" id="13_ioaeq"]
-[ext_resource type="Script" uid="uid://oskfgolfvi7b" path="res://Scenes/gui_controller.gd" id="17_psl12"]
+[ext_resource type="Script" uid="uid://c1rbfreb0e7e7" path="res://Scripts/Core/main_camera.gd" id="13_ioaeq"]
+[ext_resource type="Script" uid="uid://oskfgolfvi7b" path="res://Scripts/Core/gui_controller.gd" id="17_psl12"]
 [ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/Items/fuel.png" id="18_2ebs2"]
-[ext_resource type="Script" uid="uid://drt8cmoipvyhj" path="res://Scenes/inventory_slot.gd" id="18_oyb3p"]
+[ext_resource type="Script" uid="uid://drt8cmoipvyhj" path="res://Scripts/Core/inventory_slot.gd" id="18_oyb3p"]
 [ext_resource type="Texture2D" uid="uid://bg7vlv6wglreh" path="res://Sprites/Items/the_hand_that_feeds.png" id="20_jvnna"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyb3p"]
@@ -38,6 +39,21 @@ shadow_offset = Vector2(2, 2)
 [node name="player_character" parent="." instance=ExtResource("2_jv6wh")]
 position = Vector2(4720, 3096)
 starting_position = Vector2(4720, 3096)
+
+[node name="Context_Bark" type="Control" parent="player_character"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="context_bark" parent="." instance=ExtResource("3_mai8y")]
+position = Vector2(4720, 3096)
 
 [node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0

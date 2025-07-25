@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bft0sb0oold1v"]
 
-[ext_resource type="Script" uid="uid://dkktu8tq7lmxs" path="res://interactable_scene.gd" id="1_ej5dy"]
+[ext_resource type="Script" uid="uid://dkktu8tq7lmxs" path="res://Scripts/Core/interactable_scene.gd" id="1_ej5dy"]
 [ext_resource type="Texture2D" uid="uid://cgyp0h6jhv4w6" path="res://Backgrounds/Interactables/fume_hood_test.png" id="2_hhb2x"]
 
 [node name="int_fume_hood" type="Node2D"]

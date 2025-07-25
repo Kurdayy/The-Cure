@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nog261mv5dii"]
 
-[ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/room_transition.gd" id="1_jnsx0"]
+[ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/Core/room_transition.gd" id="1_jnsx0"]
 
 [node name="t0" type="Area2D"]
 script = ExtResource("1_jnsx0")

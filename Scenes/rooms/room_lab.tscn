@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bl5l28rx61re4"]
 
-[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/room.gd" id="1_oq0nc"]
-[ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/room_transition.gd" id="2_wfm5n"]
+[ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/Core/room.gd" id="1_oq0nc"]
+[ext_resource type="Script" uid="uid://durtuac7kceol" path="res://Scripts/Core/room_transition.gd" id="2_wfm5n"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n1tvx"]
 load_path = "res://.godot/imported/test_background_001.png-80e0e68086f14207101f55546f3cb121.ctex"

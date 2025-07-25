@@ -12,11 +12,7 @@ extends Object_Interactable
 		return parent
 			
 
-func on_interact(player: CharacterBody2D):
-	var diff: Vector2 = Global.player.global_position - global_position
-	if diff.length() > max_interact_dist:
-		return
-		
+func on_interact(player: CharacterBody2D):	
 	#if Global.GlobalFlags[Global.Flag.KeycardObtained]:
 	Global.gui_control.elevator_transition(transition_load, transition_finish)
 	Global.player.input_enabled = false
