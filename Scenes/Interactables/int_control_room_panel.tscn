@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvic72x6pok68"]
+
+[ext_resource type="Texture2D" uid="uid://dgxlca4t0uqlf" path="res://Backgrounds/Interactables/control_room_background.png" id="1_wbnnl"]
+[ext_resource type="Texture2D" uid="uid://b0p323mls26c7" path="res://Sprites/Items/control_panel_items/base_symbols.png" id="2_quyfe"]
+[ext_resource type="Texture2D" uid="uid://d011xoo537for" path="res://Sprites/Items/control_panel_items/switch_off.png" id="3_xuykr"]
+[ext_resource type="Texture2D" uid="uid://dxsxxr202x4t4" path="res://Sprites/Items/control_panel_items/switch_on.png" id="4_dvsyq"]
+[ext_resource type="Texture2D" uid="uid://8bd0r62uuagm" path="res://Sprites/Items/control_panel_items/boiler_off.png" id="5_atjm7"]
+[ext_resource type="Texture2D" uid="uid://dxvlc1y2hcjom" path="res://Sprites/Items/control_panel_items/fuel_off.png" id="6_0yv1i"]
+[ext_resource type="Texture2D" uid="uid://ba8d8svy5omqt" path="res://Sprites/Items/control_panel_items/line_off.png" id="7_mwmbs"]
+
+[node name="ControlRoomPanel" type="Node2D"]
+
+[node name="control_room_background" type="Sprite2D" parent="."]
+texture = ExtResource("1_wbnnl")
+
+[node name="diagram" type="Sprite2D" parent="."]
+position = Vector2(-284, 38)
+texture = ExtResource("2_quyfe")
+
+[node name="mute_switch" type="Sprite2D" parent="."]
+position = Vector2(-745, 288)
+texture = ExtResource("3_xuykr")
+
+[node name="lab_steam" type="Sprite2D" parent="."]
+position = Vector2(-747, -439)
+texture = ExtResource("3_xuykr")
+
+[node name="tanks_steam" type="Sprite2D" parent="."]
+position = Vector2(-747, -141)
+texture = ExtResource("3_xuykr")
+
+[node name="boiler_switch" type="Sprite2D" parent="."]
+position = Vector2(-743, 167)
+texture = ExtResource("4_dvsyq")
+
+[node name="water_switch" type="Sprite2D" parent="."]
+position = Vector2(-741, 13)
+texture = ExtResource("4_dvsyq")
+
+[node name="yard_steam" type="Sprite2D" parent="."]
+position = Vector2(-745, -272)
+texture = ExtResource("4_dvsyq")
+
+[node name="boiler_lines" type="Sprite2D" parent="."]
+position = Vector2(247, -102)
+texture = ExtResource("5_atjm7")
+
+[node name="fuel_line" type="Sprite2D" parent="."]
+position = Vector2(-396, 319)
+texture = ExtResource("6_0yv1i")
+
+[node name="tanks_line" type="Sprite2D" parent="."]
+position = Vector2(414, -16)
+texture = ExtResource("7_mwmbs")
+
+[node name="yard_line" type="Sprite2D" parent="."]
+position = Vector2(414, -176)
+texture = ExtResource("7_mwmbs")
+
+[node name="lab_line" type="Sprite2D" parent="."]
+position = Vector2(414, -340)
+texture = ExtResource("7_mwmbs")

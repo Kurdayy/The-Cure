@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn78lkrlxx37p"]
 
 [ext_resource type="Texture2D" uid="uid://tigpvfplxvtk" path="res://Sprites/Items/FumeHood.png" id="1_6lqvi"]
-[ext_resource type="Script" uid="uid://5thpxctjrgtd" path="res://Scripts/Objects/obj_fume_hood.gd" id="2_6lqvi"]
+[ext_resource type="Script" path="res://Scripts/Objects/obj_fume_hood.gd" id="2_6lqvi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw78p"]
 size = Vector2(116.363, 140.8)
@@ -19,4 +19,11 @@ scale = Vector2(2.79427, 1.00033)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_col"]
 position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_lw78p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1.77778, 134.389)
+scale = Vector2(2.79427, 1.00033)
 shape = SubResource("RectangleShape2D_lw78p")

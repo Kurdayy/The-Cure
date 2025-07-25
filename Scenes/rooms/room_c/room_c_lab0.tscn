@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv8lg7bqhtjtl"]
+[gd_scene load_steps=17 format=3 uid="uid://bv8lg7bqhtjtl"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/Core/room.gd" id="1_nwivt"]
 [ext_resource type="Texture2D" uid="uid://45wew2lx7dli" path="res://Backgrounds/bg_c_lab0.png" id="2_nwivt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b4e8577ch1v5p" path="res://Scripts/Objects/obj_to_scene.gd" id="9_ebkd2"]
 [ext_resource type="Script" uid="uid://dph1f8fanmquc" path="res://Scripts/Objects/object_interactable.gd" id="9_jb28e"]
 [ext_resource type="PackedScene" uid="uid://bft0sb0oold1v" path="res://Scenes/Interactables/int_fume_hood.tscn" id="10_ebkd2"]
+[ext_resource type="PackedScene" uid="uid://dn78lkrlxx37p" path="res://Scenes/Items/obj_fume_hood.tscn" id="12_eo80j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
 
@@ -108,3 +109,6 @@ scene_to_load = ExtResource("10_ebkd2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_necktie2/obj_col"]
 position = Vector2(0, -6.40002)
 shape = SubResource("RectangleShape2D_lw78p")
+
+[node name="obj_fume_hood" parent="." instance=ExtResource("12_eo80j")]
+position = Vector2(1661, 372)
