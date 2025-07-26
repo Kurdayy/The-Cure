@@ -9,6 +9,7 @@
 
 [node name="room_d_hall0" type="Node2D"]
 script = ExtResource("1_kunyl")
+power_flag = 17
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -56,6 +57,15 @@ polygon = PackedVector2Array(0, 1080, 1920, 1080, 1920, 832, 0, 832)
 position = Vector2(1311, 527)
 room_to = "room_c_hall0"
 transition_id = 3
+bark_text = "Where'd I put my keycard?"
+
+[node name="power_overlay" type="ColorRect" parent="."]
+visible = false
+z_index = 2000
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.784314)
 
 [editable path="transitions/t0"]
 [editable path="transitions/t2"]

@@ -36,19 +36,35 @@ enum Flag {
 	KeycardObtained,
 	FuelPickedUp,
 	FartFetishAquired,
-	ExampleOfGlobalFlag
+	ExampleOfGlobalFlag,
+	POW_SAMPLER,
+	POW_SUPRESSION,
+	POW_BOILER,
+	POW_MAINLAB,
+	POW_SUBLAB,
+	POW_WH,
+	POW_BREAKROOM,
+	POW_MNGOFFICE,
+	POW_RECEPTION,
+	POW_ELEVATOR,
+	POW_LIQUIDSTORAGE,
+	POW_SURVEILLANCE,
+	POW_MISC,
+	POW_FUSEBLOWN
 }
 
 enum Ending {
 	DEFAULT,
 	CURE,
-	STAIRS
+	STAIRS,
+	POW_LOST
 }
 
 func _ready():
 	
 	gui_control = get_tree().current_scene.get_node("GUI").get_child(0)
 	player = get_tree().current_scene.get_node("player_character")
+	reset_flags()
 	if DEBUG_SHOW_MAIN_MENU_ON_STARTUP:
 		player.input_enabled = false
 		spawn_main_menu()
@@ -61,6 +77,8 @@ func _ready():
 	
 
 func spawn_main_menu():
+	for scene in interactable_scene.get_children(false):
+		scene.queue_free()
 	var menu: MainMenu = gui_control.get_node("MainMenu")
 	if !menu:
 		menu = main_menu.instantiate()
@@ -122,16 +140,19 @@ func unpause():
 			
 ##Cleanup for loop		
 func loop_finish():
-	print("Time's up!")
+	print("Loop finished")
 	time_enabled = false
 	gui_control.timer_finish()
 	player.input_enabled = false
+	game_active = false
 	var slide
 	match(current_ending):
 		Ending.DEFAULT:
 			slide = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_default.tscn")
 		Ending.STAIRS:
 			slide = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_staircase.tscn")
+		Ending.POW_LOST:
+			slide = preload("res://Scenes/Prefabs/Ending Slides/ending_slide_supression.tscn")
 		_: # default case
 			spawn_main_menu()
 			return
@@ -146,7 +167,8 @@ func loop_finish():
 	
 
 func reset():
-	
+	for scene in interactable_scene.get_children(false):
+		scene.queue_free()
 	start_game()
 	
 	
@@ -164,6 +186,10 @@ func reset_flags():
 	GlobalFlags.resize(TotalFlags)
 	for f in GlobalFlags:
 		f = false
+	
+	for f in range(Flag.POW_SAMPLER, Flag.POW_FUSEBLOWN):
+		GlobalFlags[f] = true
+	
 	print("All flags reset")
 
 func list_flags():

@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://b52ryg3ekqs3y"]
+
+[ext_resource type="Script" uid="uid://cxqm14ioml2o3" path="res://Scripts/Interactable Scene/int_switchboard.gd" id="1_jqpgx"]
+[ext_resource type="Texture2D" uid="uid://cnyrjdi5cqcey" path="res://Backgrounds/Interactables/bg_switchboard.png" id="2_jqpgx"]
+[ext_resource type="PackedScene" uid="uid://ccr3hu71pb168" path="res://Scenes/Items/obj_dial.tscn" id="4_6p6jv"]
+[ext_resource type="Texture2D" uid="uid://bkqy8h0sl4e1n" path="res://Sprites/Items/Switchboard_Items/spr_needle.png" id="5_ao2xd"]
+
+[node name="int_switchboard" type="Node2D" node_paths=PackedStringArray("obj_needle", "dial_control", "pow_overlay")]
+script = ExtResource("1_jqpgx")
+obj_needle = NodePath("SprNeedle")
+dial_control = NodePath("dials")
+pow_overlay = NodePath("PowerOverlay")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("2_jqpgx")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="SprNeedle" type="Sprite2D" parent="."]
+position = Vector2(1336, 456)
+rotation = 0.91004
+texture = ExtResource("5_ao2xd")
+offset = Vector2(0, -40)
+
+[node name="dials" type="Node2D" parent="."]
+
+[node name="obj_dial" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(206, 232)
+power_val = 4
+flag_to_set = 10
+
+[node name="obj_dial2" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(464, 232)
+power_val = 2
+enabled = true
+flag_to_set = 11
+
+[node name="obj_dial3" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(719, 232)
+power_val = 2
+enabled = true
+flag_to_set = 12
+
+[node name="obj_dial4" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(978, 232)
+power_val = 2
+enabled = true
+flag_to_set = 13
+
+[node name="obj_dial5" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(206, 567)
+power_val = 12
+flag_to_set = 5
+
+[node name="obj_dial6" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(464, 567)
+power_val = 8
+enabled = true
+flag_to_set = 6
+
+[node name="obj_dial7" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(719, 567)
+power_val = 2
+enabled = true
+flag_to_set = 9
+
+[node name="obj_dial8" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(978, 567)
+power_val = 4
+enabled = true
+flag_to_set = 8
+
+[node name="obj_dial9" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(206, 898)
+power_val = 4
+enabled = true
+flag_to_set = 14
+
+[node name="obj_dial10" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(464, 898)
+power_val = 2
+enabled = true
+flag_to_set = 16
+
+[node name="obj_dial11" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(719, 898)
+power_val = 8
+enabled = true
+flag_to_set = 15
+
+[node name="obj_dial12" parent="dials" instance=ExtResource("4_6p6jv")]
+position = Vector2(978, 898)
+power_val = 8
+enabled = true
+flag_to_set = 7
+
+[node name="PowerOverlay" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+z_as_relative = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.823529)

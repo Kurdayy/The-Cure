@@ -5,9 +5,10 @@ extends Node2D
 func kill_scene():
 	Global.player.input_enabled = true
 	Global.interactable_scene.hide()
-	queue_free()
+	self.hide()
+	#ddddddddddqueue_free()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") && self.visible:
 		call_deferred("kill_scene")
-		#dkill_scene()
+		#kill_scene()

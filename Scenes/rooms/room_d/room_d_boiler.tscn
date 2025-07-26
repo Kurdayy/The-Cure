@@ -1,19 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2x2hss4usgk0"]
+[gd_scene load_steps=9 format=3 uid="uid://c2x2hss4usgk0"]
 
 [ext_resource type="Script" uid="uid://c1mx7iv3y3lcp" path="res://Scripts/Core/room.gd" id="1_vek82"]
 [ext_resource type="Texture2D" uid="uid://brmbajnxxqfq" path="res://Backgrounds/bg_d_boiler.png" id="2_vek82"]
 [ext_resource type="PackedScene" uid="uid://nog261mv5dii" path="res://Scenes/Prefabs/transition.tscn" id="3_mf466"]
-[ext_resource type="Texture2D" uid="uid://bqf32lunaavvk" path="res://Sprites/Items/fuel.png" id="4_un252"]
+[ext_resource type="PackedScene" uid="uid://gbbjr3en5x2g" path="res://Scenes/Items/obj_pushable.tscn" id="4_un252"]
+[ext_resource type="Script" uid="uid://b4e8577ch1v5p" path="res://Scripts/Objects/obj_to_scene.gd" id="5_hncqy"]
+[ext_resource type="PackedScene" uid="uid://b52ryg3ekqs3y" path="res://Scenes/Interactables/int_switchboard.tscn" id="6_iovba"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_un252"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufb80"]
-size = Vector2(56, 50)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0m4w"]
+size = Vector2(202, 274)
 
 [node name="room_d_boiler" type="Node2D"]
 script = ExtResource("1_vek82")
+power_flag = 7
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -37,16 +38,35 @@ physics_material_override = SubResource("PhysicsMaterial_p15v1")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
 polygon = PackedVector2Array(0, 1080, 1920, 1080, 1920, 0, 0, 0, 0, 552, 80, 552, 80, 320, 1560, 320, 1560, 304, 1696, 304, 1696, 320, 1832, 320, 1832, 1016, 80, 1016, 80, 832, 0, 832)
 
-[node name="Fuel" type="Sprite2D" parent="."]
-position = Vector2(1080, 752)
-texture = ExtResource("4_un252")
+[node name="power_overlay" type="ColorRect" parent="."]
+visible = false
+z_index = 2000
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.784314)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Fuel"]
-physics_material_override = SubResource("PhysicsMaterial_un252")
-gravity_scale = 0.0
+[node name="RigidBody2D" parent="." instance=ExtResource("4_un252")]
+position = Vector2(880, 792)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fuel/RigidBody2D"]
-position = Vector2(-4, 15)
-shape = SubResource("RectangleShape2D_ufb80")
+[node name="CollisionShape2D" parent="RigidBody2D" index="0"]
+position = Vector2(-4, 4)
+scale = Vector2(2.2243, 2.2243)
+
+[node name="Fuel" parent="RigidBody2D" index="1"]
+scale = Vector2(2.30941, 2.30941)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1128, 88)
+script = ExtResource("5_hncqy")
+scene_to_load = ExtResource("6_iovba")
+scn_name = "int_switchboard"
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(91, 127)
+shape = SubResource("RectangleShape2D_b0m4w")
 
 [editable path="transitions/t0"]
+[editable path="RigidBody2D"]

@@ -8,6 +8,7 @@
 
 [node name="room_c_hall1" type="Node2D"]
 script = ExtResource("1_7tqut")
+power_flag = 17
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -34,5 +35,13 @@ physics_material_override = SubResource("PhysicsMaterial_p15v1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_collision"]
 polygon = PackedVector2Array(0, 1000, 1296, 1000, 1296, 928, 1344, 928, 1344, 784, 1296, 784, 1296, 720, 1120, 720, 1120, 688, 976, 688, 976, 720, 896, 720, 896, 320, 600, 320, 600, 720, 0, 720, 0, 0, 1920, 0, 1920, 1080, 0, 1080)
+
+[node name="power_overlay" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.784314)
 
 [editable path="transitions/t0"]

@@ -14,6 +14,10 @@ extends Object_Interactable
 
 func on_interact(player: CharacterBody2D):	
 	#if Global.GlobalFlags[Global.Flag.KeycardObtained]:
+	if Global.GlobalFlags[Global.Flag.POW_FUSEBLOWN] || !Global.GlobalFlags[Global.Flag.POW_ELEVATOR]:
+		bark_text = "Crap, the powers out"
+		spawn_bark()
+		return
 	Global.gui_control.elevator_transition(transition_load, transition_finish)
 	Global.player.input_enabled = false
 		

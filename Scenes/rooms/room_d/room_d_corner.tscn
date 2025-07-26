@@ -8,6 +8,7 @@
 
 [node name="room_d_corner" type="Node2D"]
 script = ExtResource("1_5nl70")
+power_flag = 17
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -41,6 +42,14 @@ polygon = PackedVector2Array(1920, 0, 1920, 552, 1768, 552, 1768, 536, 1632, 536
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="room_collision"]
 polygon = PackedVector2Array(0, 1080, 1920, 1080, 1920, 832, 680, 832, 680, 688, 840, 688, 840, 0, 0, 0)
+
+[node name="power_overlay" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.784314)
 
 [editable path="transitions/t0"]
 [editable path="transitions/t1"]

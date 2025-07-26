@@ -52,16 +52,12 @@ func spawn_bark():
 
 ##Default select behavior is to highlight
 func set_selected():
-	print("Selected interactable: ", self,)
 	material.set_shader_parameter("line_thickness", max_outline_thickness)
 	selected = true
 
 
 ##Default deselect behavior is to remove highlight
 func set_unselected():
-	print("Deselected interactable: ", self,)
-	#var mat = self.material
-	#if mat is ShaderMaterial:
 	material.set_shader_parameter("line_thickness", 0)
 	selected = false
 

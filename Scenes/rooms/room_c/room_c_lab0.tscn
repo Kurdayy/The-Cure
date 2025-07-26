@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dp6rxs1bdovuv" path="res://Sprites/Items/tie.png" id="7_lw78p"]
 [ext_resource type="Script" uid="uid://b4e8577ch1v5p" path="res://Scripts/Objects/obj_to_scene.gd" id="9_ebkd2"]
 [ext_resource type="Script" uid="uid://dph1f8fanmquc" path="res://Scripts/Objects/object_interactable.gd" id="9_jb28e"]
-[ext_resource type="PackedScene" uid="uid://bft0sb0oold1v" path="res://Scenes/Interactables/int_fume_hood.tscn" id="10_ebkd2"]
+[ext_resource type="PackedScene" uid="uid://b52ryg3ekqs3y" path="res://Scenes/Interactables/int_switchboard.tscn" id="11_jb28e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p15v1"]
 
@@ -28,6 +28,7 @@ size = Vector2(116.363, 140.8)
 
 [node name="room_c_lab0" type="Node2D"]
 script = ExtResource("1_nwivt")
+power_flag = 9
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -101,10 +102,19 @@ scale = Vector2(0.34375, 0.3125)
 texture = ExtResource("7_lw78p")
 offset = Vector2(0, -38.4)
 script = ExtResource("9_ebkd2")
-scene_to_load = ExtResource("10_ebkd2")
+scene_to_load = ExtResource("11_jb28e")
+scn_name = "int_switchboard"
 
 [node name="obj_col" type="Area2D" parent="obj_necktie2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_necktie2/obj_col"]
 position = Vector2(0, -6.40002)
 shape = SubResource("RectangleShape2D_lw78p")
+
+[node name="power_overlay" type="ColorRect" parent="."]
+visible = false
+z_index = 4096
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.784314)

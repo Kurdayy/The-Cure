@@ -21,6 +21,7 @@ func _ready():
 			t.connect("room_transition", room_transition)
 		r.hide()
 	
+	#call_deferred("update_current_room", starting_room)
 	update_current_room(starting_room)
 
 
@@ -51,6 +52,12 @@ func update_current_room(new_room: Room):
 	for c in current_room.get_children(true):
 		c.set_process(true)
 		c.set_physics_process(true)
+	
+	# Check for power flags and display power overlay accordingly
+	if !Global.GlobalFlags[current_room.power_flag] || Global.GlobalFlags[Global.Flag.POW_FUSEBLOWN]:
+		current_room.power_overlay.show()
+	else:
+		current_room.power_overlay.hide()
 	print("Changed current room to ", current_room)
 	
 	

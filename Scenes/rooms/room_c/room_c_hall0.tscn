@@ -22,6 +22,7 @@ size = Vector2(128, 61.8205)
 
 [node name="room_c_hall0" type="Node2D"]
 script = ExtResource("1_s0w54")
+power_flag = 17
 metadata/_custom_type_script = "uid://c1mx7iv3y3lcp"
 
 [node name="background" type="Sprite2D" parent="."]
@@ -66,11 +67,13 @@ polygon = PackedVector2Array(216, 1000, 448, 1000, 448, 1032, 592, 1032, 592, 10
 position = Vector2(1490, 688)
 room_to = "room_b_hall0"
 transition_id = 1
+bark_text = "Where'd I put my keycard?"
 
 [node name="obj_elevator_up2" parent="." instance=ExtResource("4_vpal8")]
 position = Vector2(1271, 687)
 room_to = "room_d_hall0"
 transition_id = 1
+bark_text = "Where'd I put my keycard?"
 
 [node name="obj_stair_entrance" type="Node2D" parent="."]
 position = Vector2(635, 475)
@@ -93,5 +96,13 @@ shape = SubResource("RectangleShape2D_ih4y5")
 [node name="SprIntercom" type="Sprite2D" parent="."]
 position = Vector2(1142, 588)
 texture = ExtResource("6_j5sl6")
+
+[node name="power_overlay" type="ColorRect" parent="."]
+visible = false
+z_index = 2000
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.784314)
 
 [editable path="transitions/t0"]

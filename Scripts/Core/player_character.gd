@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var movement_speed: float = 200
 @export var movement_accel: float = 400
 @export var movement_deccel: float = 600
+@export var movement_push_multiplier: float = 0.1
+var movement_push_multi: float = 1
 
 @export var starting_position: Vector2
 
@@ -32,11 +34,15 @@ func _physics_process(delta: float) -> void:
 		
 	#if input accelerate to our goals
 	if input_map != Vector2.ZERO:
-		velocity.x = clamp(velocity.x + (input_map.x * movement_accel * delta), -movement_speed, movement_speed)
-		velocity.y = clamp(velocity.y + (input_map.y * movement_accel * delta), -movement_speed, movement_speed)
+		velocity.x = clamp(velocity.x + (input_map.x * movement_accel * delta), -movement_speed * movement_push_multi, movement_speed  * movement_push_multi)
+		velocity.y = clamp(velocity.y + (input_map.y * movement_accel * delta), -movement_speed  * movement_push_multi, movement_speed  * movement_push_multi)
 		#clamp length
-		if velocity.length() > movement_speed:
-			velocity = velocity.normalized() * movement_speed
+		if velocity.length() > movement_speed * movement_push_multi:
+			velocity = velocity.normalized() * movement_speed * movement_push_multi
+	
+	#var col = false
+	
+	
 	
 	#no velocity, return function
 	if velocity != Vector2.ZERO:
@@ -53,6 +59,26 @@ func _physics_process(delta: float) -> void:
 		#additionally check for updates to interactables after moving
 		move_and_slide()
 		update_nearest_interactable()
+		
+		var pushing = false
+		for i in get_slide_collision_count():
+			var c = get_slide_collision(i)
+			if c.get_collider() is PushableObject:
+				var push_vel = -c.get_normal().normalized()
+				var push_dir: Vector2 = Vector2.ZERO
+				if (push_vel.x > push_vel.y && push_vel.x > -push_vel.y) || (push_vel.x < -push_vel.y && push_vel.x < -push_vel.y): ## positive check for length, negative check for length
+					push_dir.x = push_vel.x
+				else:
+					push_dir.y = push_vel.y
+				c.get_collider().set_axis_velocity(push_vel * movement_speed)
+				pushing = true
+				
+		if pushing:
+			movement_push_multi = movement_push_multiplier
+		else:
+			movement_push_multi = 1.0
+			
+		
 	z_index = global_position.y - Global.room_manager.current_room.position.y
 	
 	

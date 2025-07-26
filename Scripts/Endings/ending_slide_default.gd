@@ -5,9 +5,9 @@ var b_menu: Button
 var b_reset: Button
 
 var tween: Tween
-const fade_in_time: float = 1
-const text_delay: float = 0.5
-const text_display_time: float = 10
+@export var fade_in_time: float = 1
+@export var text_delay: float = 0.5
+@export var text_display_time: float = 10
 
 func _ready():
 	text_box = $EndingText
